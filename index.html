@@ -429,6 +429,26 @@ function generateConfig() {
         downloadButton.removeAttribute('disabled');
     }
 
+    document.addEventListener('DOMContentLoaded', function () {
+    const copyButton = document.getElementById('copyButton');
+    const downloadButton = document.getElementById('downloadButton');
+
+    new ClipboardJS('#copyButton');
+
+    copyButton.addEventListener('click', function () {
+        copyButton.innerText = 'Copied!';
+        copyButton.setAttribute('disabled', 'true');
+
+        // Add the following lines to re-enable the button after a short delay
+        setTimeout(function () {
+            copyButton.innerText = 'Copy Configuration';
+            copyButton.removeAttribute('disabled');
+        }, 2000); // Adjust the delay (in milliseconds) as needed
+    });
+
+    downloadButton.removeAttribute('disabled');
+});
+        
     function downloadConfig() {
         const configOutput = document.getElementById('configOutput').innerText;
         const blob = new Blob([configOutput], { type: 'application/json' });
