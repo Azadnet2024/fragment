@@ -219,9 +219,6 @@
         </div>
     </main>
 
-    <button id="cloudflare" type="button" onclick="deployOnCloudflare()">Deploy on Cloudflare Worker</button>
-    <p>Click <a href="https://deploy.workers.cloudflare.com/?url=https://github.com/GregBrimble/cf-workers-typescript-template&paid=true" target="_blank">the button below</a> and follow the setup instructions.</p>
-
     <a href="https://deploy.workers.cloudflare.com/?url=https://github.com/GregBrimble/cf-workers-typescript-template&paid=true" target="_blank">
       <img src="https://deploy.workers.cloudflare.com/button?paid=true" alt="Deploy to Cloudflare Workers" />
     </a>
@@ -232,11 +229,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script>
         
-function deployToCloudflare() {
-    const workerTemplateUrl = 'https://github.com/GregBrimble/cf-workers-typescript-template&paid=true';
-    const deploymentUrl = 'https://deploy.workers.cloudflare.com/?url=' + encodeURIComponent(workerTemplateUrl);
-    window.open(deploymentUrl, '_blank');
-}
+
 function generateConfig() {
     const cleanIP = document.getElementById('cleanIP').value;
     const yourDomain = document.getElementById('yourDomain').value;
