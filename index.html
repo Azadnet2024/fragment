@@ -111,9 +111,12 @@
     <h2>یا اگر اعتماد دارید، می توانید کلید را برای ایجاد ورکر ایجاد کنید و از دپلوی در کلودفلر استفاده کنید</h2>
     <h2>اکنون دامنه ورکر شما لینک اشتراک شماست</h2>
 
-    <div style="display: flex;">
+    <main style="display: flex; justify-content: center;">
+        
         <form id="configForm">
-                    <label for="cleanIP">Clean IP / Domain:</label>
+
+            
+        <label for="cleanIP">Clean IP / Domain:</label>
         <input type="text" id="cleanIP" name="cleanIP" placeholder="e.g., example.com , 1.1.1.1" required><br>
         
         <label for="yourDomain">Your Domain:</label>
@@ -165,28 +168,24 @@
         <label for="apiKey">Cloudflare API key (worker zone) (Optional):</label>
         <input type="text" id="apiKey" name="apikey" placeholder="your-cloudflare-api-key"><br>
         
-        <button type="button" onclick="generateConfig()">Generate Configuration</button>
-    </form>
+            <button type="button" onclick="generateConfig()">Generate Configuration</button>
+        </form>
 
-    <pre id="configOutput"></pre>
+        <div class="output-container">
+            <pre id="configOutput"></pre>
+            <button id="copyButton" type="button" onclick="copyConfiguration()" disabled>Copy Configuration</button>
+        </div>
+    </main>
 
     <button type="button" onclick="deployToCloudflare()">Deploy on Cloudflare Worker</button>
 
     <script>
     function deployToCloudflare() {
     const configOutput = document.getElementById('configOutput').innerText;
-
-    // Your Cloudflare Worker domain
     const workerDomain = 'your-worker-name.your-subdomain.workers.dev';
-
-    // Your Cloudflare account information
     const email = 'your-cloudflare-email@example.com';
     const apiKey = 'your-cloudflare-api-key';
-
-    // Construct the Cloudflare API URL
     const apiUrl = `https://api.cloudflare.com/client/v4/accounts/self/workers/scripts/${workerDomain}`;
-
-    // Make a fetch request to update the worker script
     fetch(apiUrl, {
         method: 'PUT',
         headers: {
@@ -209,6 +208,7 @@
         console.error('Error deploying configuration:', error);
     });
 }
+        
 function generateConfig() {
     const cleanIP = document.getElementById('cleanIP').value;
     const yourDomain = document.getElementById('yourDomain').value;
@@ -221,23 +221,9 @@ function generateConfig() {
     const allowInsecure = document.getElementById('allowInsecure').checked;
     const allowEarlyData = document.getElementById('allowEarlyData').checked;
     const selectedProtocol = document.getElementById('protocol').value;
-
-    // Constants
     const portsList = [443, 8443, 2053, 2096, 2087, 2083];
-
-    // Randomized constants
     const randomizedDomain = yourDomain.toLowerCase().split('').map(char => Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase()).join('');
     const randomPath = path;
-
-            <button type="button" onclick="generateConfig()">Generate Configuration</button>
-        </form>
-
-        <div class="output-container">
-            <pre id="configOutput"></pre>
-        </div>
-    </div>
-
-    <script>
     const config = {
         "log": {
             "access": "",
@@ -287,7 +273,7 @@ function generateConfig() {
         "outbounds": [
             {
                 "tag": "proxy",
-                "protocol": selectedProtocol,
+                "protocol": selectedProtocol ? "vless" : "vmess",
                 "settings": {
                     "vnext": [
                         {
@@ -307,14 +293,15 @@ function generateConfig() {
                     ]
                 },
                 "streamSettings": {
-                    "network": tls ? "ws" : "tcp",
+                    "network": "ws",
                     "security": tls ? "tls" : "none",
                     "tlsSettings": {
-                        "allowInsecure": allowInsecure,
+                        "allowInsecure": allowInsecure ? "true" : "false",
                         "serverName": randomizedDomain,
                         "alpn": [
                             "h2",
-                            "http/1.1"
+                            "http/1.1",
+                            "fakedns"
                         ],
                         "fingerprint": "chrome",
                         "show": false
@@ -326,14 +313,14 @@ function generateConfig() {
                         }
                     },
                     "sockopt": {
-                        "dialerProxy": mux ? "fragment" : "",
+                        "dialerProxy": "fragment",
                         "tcpKeepAliveIdle": 100,
                         "mark": 255,
-                        "tcpNoDelay": true
+                        "tcpNoDelay": allowEarlyData ? "true" : "false",
                     }
                 },
                 "mux": {
-                    "enabled": mux,
+                    "enabled": mux ? "true" : "false",
                     "concurrency": mux ? 8 : -1  // Set to 8 if mux is enabled, otherwise -1
                 }
             },
@@ -350,7 +337,7 @@ function generateConfig() {
                 },
                 "streamSettings": {
                     "sockopt": {
-                        "tcpNoDelay": true,
+                        "tcpNoDelay": allowEarlyData ? "true" : "false",
                         "tcpKeepAliveIdle": 100
                     }
                 }
@@ -389,7 +376,7 @@ function generateConfig() {
                         "domain:ir",
                         "geosite:cn"
                     ],
-                    "enabled": true
+                    "enabled": block ? "true" : "false"
                 },
                 {
                     "id": "5425034033205580637",
@@ -400,7 +387,7 @@ function generateConfig() {
                         "geoip:cn",
                         "geoip:ir"
                     ],
-                    "enabled": true
+                    "enabled": block ? "true" : "false"
                 },
                 {
                     "id": "5627785659655799759",
