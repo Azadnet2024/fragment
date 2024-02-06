@@ -7,3 +7,6 @@ https://opiran-club.github.io/worker_fragment_creator
 after creating code using above generator, copy all java script and paste into cloudflare worker
 
 now yor worker domain is yor subscription link
+
+
+inspired by [seramo](https://github.com/seramo/random-fragment-sub-worker)
