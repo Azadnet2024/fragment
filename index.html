@@ -62,33 +62,43 @@
     <button type="button" onclick="deployToCloudflare()">Deploy on Cloudflare Worker</button>
 
     <script>
-        function deployToCloudflare() {
-            const configOutput = document.getElementById('configOutput').innerText;
+function deployToCloudflare() {
+    const configOutput = document.getElementById('configOutput').innerText;
 
-            // Your Cloudflare Worker URL
-            const workerUrl = 'https://your-worker-name.your-subdomain.workers.dev';
+    // Your Cloudflare Worker domain
+    const workerDomain = 'your-worker-name.your-subdomain.workers.dev';
 
-            // Make a fetch request to update the worker script
-            fetch(workerUrl, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/javascript',
-                },
-                body: configOutput,
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('Configuration deployed successfully!');
-                } else {
-                    alert('Failed to deploy configuration. Please check the console for details.');
-                    console.error('Failed to deploy configuration:', response.statusText);
-                }
-            })
-            .catch(error => {
-                alert('An error occurred while deploying the configuration. Please check the console for details.');
-                console.error('Error deploying configuration:', error);
-            });
+    // Your Cloudflare account information
+    const email = 'your-cloudflare-email@example.com';
+    const apiKey = 'your-cloudflare-api-key';
+
+    // Construct the Cloudflare API URL
+    const apiUrl = `https://api.cloudflare.com/client/v4/accounts/self/workers/scripts/${workerDomain}`;
+
+    // Make a fetch request to update the worker script
+    fetch(apiUrl, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/javascript',
+            'X-Auth-Email': email,
+            'X-Auth-Key': apiKey,
+        },
+        body: configOutput,
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Configuration deployed successfully!');
+        } else {
+            alert('Failed to deploy configuration. Please check the console for details.');
+            console.error('Failed to deploy configuration:', response.statusText);
         }
+    })
+    .catch(error => {
+        alert('An error occurred while deploying the configuration. Please check the console for details.');
+        console.error('Error deploying configuration:', error);
+    });
+}
+
 
         function generateConfig() {
             const cleanIP = document.getElementById('cleanIP').value;
