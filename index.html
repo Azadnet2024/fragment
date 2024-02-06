@@ -63,6 +63,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            position: center;
         }
         
         button:hover {
@@ -91,7 +92,7 @@
 
         button[id="cloudflare"] {
             background-color: #FFD700; /* Change this to your desired yellow color */
-            color: #fff;
+            color: #555;
             border: none;
             padding: 10px;
             border-radius: 5px;
@@ -177,9 +178,9 @@
 
         <label for="apiKey">Cloudflare API key (worker zone) (Optional):</label>
         <input type="text" id="apiKey" name="apikey" placeholder="your-cloudflare-api-key"><br>
-        
+
+               <button type="button" onclick="generateConfig()">Generate Configuration</button>
         </form>
-        <button type="button" onclick="generateConfig()">Generate Configuration</button>
         
         <div class="output-container">
             <button id="copyButton" type="button" onclick="copyConfiguration()" disabled>Copy Configuration</button>
