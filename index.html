@@ -66,7 +66,7 @@
             cursor: pointer;
             transition: background-color 0.3s;
             margin-left: 20px;
-            margin-above: 10px;
+            margin-top: 10px;
         }
         
         button:hover {
@@ -102,7 +102,7 @@
             cursor: pointer;
             transition: background-color 0.3s;
             margin-left: 20px;
-            margin-above: 10px;
+            margin-top: 10px;
         }
         
         button[id="downloadButton"]:hover {
@@ -242,7 +242,7 @@ function generateConfig() {
     const allowInsecure = document.getElementById('allowInsecure').checked;
     const allowEarlyData = document.getElementById('allowEarlyData').checked;
     const selectedProtocol = document.getElementById('protocol').value;
-    const portsList = [443, 8443, 2053, 2096, 2087, 2083];
+    const portsList = [443, 8443, 2053, 2096, 2087, 2083, 80, 8080, 8880, 2052, 2082, 2086, 2095];
     const randomizedDomain = yourDomain.toLowerCase().split('').map(char => Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase()).join('');
     const randomPath = path;
     const config = {
