@@ -98,27 +98,25 @@ function deployToCloudflare() {
         console.error('Error deploying configuration:', error);
     });
 }
+function generateConfig() {
+    const cleanIP = document.getElementById('cleanIP').value;
+    const yourDomain = document.getElementById('yourDomain').value;
+    const port = document.getElementById('port').value;
+    const userUUID = document.getElementById('userUUID').value;
+    const path = document.getElementById('path').value;
+    const tls = document.getElementById('tls').checked;
+    const mux = document.getElementById('mux').checked;
+    const block = document.getElementById('block').checked;
+    const allowInsecure = document.getElementById('allowInsecure').checked;
+    const allowEarlyData = document.getElementById('allowEarlyData').checked;
+    const selectedProtocol = document.getElementById('protocol').value;
 
+    // Constants
+    const portsList = [443, 8443, 2053, 2096, 2087, 2083];
 
-        function generateConfig() {
-            const cleanIP = document.getElementById('cleanIP').value;
-            const yourDomain = document.getElementById('yourDomain').value;
-            const port = document.getElementById('port').value;
-            const userUUID = document.getElementById('userUUID').value;
-            const path = document.getElementById('path').value;
-            const tls = document.getElementById('tls').checked;
-            const mux = document.getElementById('mux').checked;
-            const block = document.getElementById('block').checked;
-            const allowInsecure = document.getElementById('allowInsecure').checked;
-            const allowEarlyData = document.getElementById('allowEarlyData').checked;
-            const selectedProtocol = document.getElementById('protocol').value;
-
-            // Constants
-            const portsList = [443, 8443, 2053, 2096, 2087, 2083];
-
-            // Randomized constants
-            const randomizedDomain = yourDomain.toLowerCase().split('').map(char => Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase()).join('');
-            const randomPath = path || '/' + generateRandomString(59);
+    // Randomized constants
+    const randomizedDomain = yourDomain.toLowerCase().split('').map(char => Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase()).join('');
+    const randomPath = path;
 
     // Configuration object
     const config = {
@@ -217,7 +215,7 @@ function deployToCloudflare() {
                 },
                 "mux": {
                     "enabled": mux,
-                    "concurrency": -1
+                    "concurrency": mux ? 8 : -1  // Set to 8 if mux is enabled, otherwise -1
                 }
             },
             {
@@ -226,9 +224,9 @@ function deployToCloudflare() {
                 "settings": {
                     "domainStrategy": "AsIs",
                     "fragment": {
-                        "packets": "1-1",
-                        "length": "1-3",
-                        "interval": "5"
+                        "packets": tls ? "tlshello" : "1-1",
+                        "length": tls ? "10-20" : "1-3",
+                        "interval": tls ? "10-20" : "5"
                     }
                 },
                 "streamSettings": {
@@ -272,7 +270,7 @@ function deployToCloudflare() {
                         "domain:ir",
                         "geosite:cn"
                     ],
-                    "enabled": block
+                    "enabled": true
                 },
                 {
                     "id": "5425034033205580637",
@@ -283,7 +281,7 @@ function deployToCloudflare() {
                         "geoip:cn",
                         "geoip:ir"
                     ],
-                    "enabled": block
+                    "enabled": true
                 },
                 {
                     "id": "5627785659655799759",
@@ -296,15 +294,15 @@ function deployToCloudflare() {
         }
     };
 
-            // Respond with the JSON configuration
-            document.getElementById('configOutput').innerText = JSON.stringify(config, null, 4);
+    // Respond with the JSON configuration
+    document.getElementById('configOutput').innerText = JSON.stringify(config, null, 4);
 
-            // Update the copy button text
-            const copyButton = document.getElementById('copyButton');
-            copyButton.innerText = 'Copy Configuration';
-            copyButton.removeAttribute('disabled');
-        }
-
+    // Update the copy button text
+    const copyButton = document.getElementById('copyButton');
+    copyButton.innerText = 'Copy Configuration';
+    copyButton.removeAttribute('disabled');
+}
+        
         document.addEventListener('DOMContentLoaded', function () {
             // Initialize Clipboard.js
             new ClipboardJS('#copyButton');
