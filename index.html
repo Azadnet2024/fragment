@@ -224,7 +224,6 @@
     <footer>© Prepared by <a href="https://github.com/opiran-club">Farzad</a></footer>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script>
 function generateConfig() {
     const cleanIP = document.getElementById('cleanIP').value;
@@ -421,33 +420,9 @@ function generateConfig() {
         configOutput.innerText = JSON.stringify(config, null, 4);
         configOutput.parentElement.classList.add('config-output-container');
     
-        const copyButton = document.getElementById('copyButton');
-        copyButton.innerText = 'Copy Configuration';
-        copyButton.removeAttribute('disabled');
-    
         const downloadButton = document.getElementById('downloadButton');
         downloadButton.removeAttribute('disabled');
     }
-
-    document.addEventListener('DOMContentLoaded', function () {
-    const copyButton = document.getElementById('copyButton');
-    const downloadButton = document.getElementById('downloadButton');
-
-    new ClipboardJS('#copyButton');
-
-    copyButton.addEventListener('click', function () {
-        copyButton.innerText = 'Copied!';
-        copyButton.setAttribute('disabled', 'true');
-
-        // Add the following lines to re-enable the button after a short delay
-        setTimeout(function () {
-            copyButton.innerText = 'Copy Configuration';
-            copyButton.removeAttribute('disabled');
-        }, 2000); // Adjust the delay (in milliseconds) as needed
-    });
-
-    downloadButton.removeAttribute('disabled');
-});
         
     function downloadConfig() {
         const configOutput = document.getElementById('configOutput').innerText;
