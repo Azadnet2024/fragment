@@ -28,6 +28,12 @@
             margin-bottom: 15px;
         }
 
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
         form {
             background-color: #fff;
             padding: 20px;
@@ -35,48 +41,16 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 300px;
             text-align: left;
-            margin-left: 20px; /* Adjusted margin */
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 15px;
-            box-sizing: border-box;
-        }
-
-        checkbox {
-            margin-right: 5px;
-        }
-
-        button {
-            background-color: #008080;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            width: 100%;
-        }
-
-        button:hover {
-            background-color: #005757;
+            margin-left: 20px;
         }
 
         .output-container {
             width: 300px;
             margin-left: 20px;
+            position: relative; /* Added position relative */
         }
 
         pre {
-            margin-top: 20px;
             white-space: pre-wrap;
             word-wrap: break-word;
         }
@@ -89,7 +63,9 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
-            width: 100%;
+            position: absolute; /* Changed position to absolute */
+            top: 10px; /* Adjusted top position */
+            right: 10px; /* Added right position */
         }
 
         #copyButton:hover {
@@ -99,6 +75,12 @@
         #copyButton[disabled] {
             background-color: #ccc;
             cursor: not-allowed;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
@@ -113,8 +95,7 @@
     <h2>یا اگر اعتماد دارید، می توانید کلید را برای ایجاد ورکر ایجاد کنید و از دپلوی در کلودفلر استفاده کنید</h2>
     <h2>اکنون دامنه ورکر شما لینک اشتراک شماست</h2>
 
-    <main style="display: flex; justify-content: center;">
-        
+    <main>
         <form id="configForm">
 
             
@@ -174,12 +155,14 @@
         </form>
 
         <div class="output-container">
-            <pre id="configOutput"></pre>
             <button id="copyButton" type="button" onclick="copyConfiguration()" disabled>Copy Configuration</button>
+            <pre id="configOutput"></pre>
         </div>
     </main>
 
     <button type="button" onclick="deployToCloudflare()">Deploy on Cloudflare Worker</button>
+
+    <footer>© Prepared by <a href="https://github.com/opiran-club">Farzad</a></footer>
 
     <script>
     function deployToCloudflare() {
