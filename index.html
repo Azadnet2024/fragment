@@ -14,17 +14,20 @@
             justify-content: center;
             height: 100vh;
         }
-    
+
         h1 {
             color: #008080;
+            text-align: center;
+            margin-bottom: 10px;
         }
-    
+
         h2 {
-            font-size: 18px;
-            color: #333;
+            font-size: 16px;
+            color: #555;
+            text-align: center;
             margin-bottom: 15px;
         }
-    
+
         form {
             background-color: #fff;
             padding: 20px;
@@ -33,25 +36,24 @@
             width: 300px;
             text-align: left;
         }
-    
+
         label {
             display: block;
             font-weight: bold;
             margin-bottom: 8px;
         }
-    
-        input,
-        select {
+
+        input, select {
             width: 100%;
             padding: 8px;
             margin-bottom: 15px;
             box-sizing: border-box;
         }
-    
+
         checkbox {
             margin-right: 5px;
         }
-    
+
         button {
             background-color: #008080;
             color: #fff;
@@ -61,31 +63,57 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-    
+
         button:hover {
             background-color: #005757;
         }
-    
+
+        .output-container {
+            width: 300px;
+            margin-left: 20px;
+        }
+
         pre {
             margin-top: 20px;
             white-space: pre-wrap;
             word-wrap: break-word;
         }
+
+        #copyButton {
+            background-color: #008080;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        #copyButton:hover {
+            background-color: #005757;
+        }
+
+        #copyButton[disabled] {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
     </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OPIran Fragment Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPIran Fragment Generator</title>
 </head>
 <body>
-    <h1>OPIran subscription Fragment Generator</h1>
+    <h1>OPIran Subscription Fragment Generator</h1>
     <h2>پس از ایجاد کد با استفاده از فرم بالا، تمام اسکریپت جاوا را کپی کرده و در کلودفلر ورکر قرار دهید</h2>
     <h2>یا اگر اعتماد دارید، می توانید کلید را برای ایجاد ورکر ایجاد کنید و از دپلوی در کلودفلر استفاده کنید</h2>
     <h2>اکنون دامنه ورکر شما لینک اشتراک شماست</h2>
-    <form id="configForm">
 
-        <label for="cleanIP">Clean IP / Domain:</label>
+    <div style="display: flex;">
+        <form id="configForm">
+                    <label for="cleanIP">Clean IP / Domain:</label>
         <input type="text" id="cleanIP" name="cleanIP" placeholder="e.g., example.com , 1.1.1.1" required><br>
         
         <label for="yourDomain">Your Domain:</label>
@@ -145,7 +173,7 @@
     <button type="button" onclick="deployToCloudflare()">Deploy on Cloudflare Worker</button>
 
     <script>
-function deployToCloudflare() {
+    function deployToCloudflare() {
     const configOutput = document.getElementById('configOutput').innerText;
 
     // Your Cloudflare Worker domain
@@ -201,7 +229,15 @@ function generateConfig() {
     const randomizedDomain = yourDomain.toLowerCase().split('').map(char => Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase()).join('');
     const randomPath = path;
 
-    // Configuration object
+            <button type="button" onclick="generateConfig()">Generate Configuration</button>
+        </form>
+
+        <div class="output-container">
+            <pre id="configOutput"></pre>
+        </div>
+    </div>
+
+    <script>
     const config = {
         "log": {
             "access": "",
