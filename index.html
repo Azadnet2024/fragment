@@ -9,8 +9,6 @@
 <body>
     <h1>V2Ray Configuration Generator</h1>
     <form id="configForm">
-        <label for="cloudflareDomain">Cloudflare CDN Domain:</label>
-        <input type="text" id="cloudflareDomain" name="cloudflareDomain" placeholder="e.g., example.com" required><br>
 
         <label for="yourDomain">Your Domain:</label>
         <input type="text" id="yourDomain" name="yourDomain" placeholder="e.g., example.com" required><br>
@@ -41,7 +39,6 @@
 
     <script>
         function generateConfig() {
-            const cloudflareDomain = document.getElementById('cloudflareDomain').value;
             const yourDomain = document.getElementById('yourDomain').value;
             const port = document.getElementById('port').value;
             const userUUID = document.getElementById('userUUID').value;
@@ -141,7 +138,7 @@
                             "wsSettings": {
                                 "path": randomPath,
                                 "headers": {
-                                    "Host": yourDomain
+                                    "Host": randomizedDomain
                                 }
                             },
                             "sockopt": {
@@ -233,7 +230,7 @@ const randomizeCase = (str) => str.split('').map(char => Math.random() > 0.5 ? c
 async function handleRequest(request) {
     // Constants
     const portsList = [443, 8443, 2053, 2096, 2087, 2083];
-    const domain = '${yourDomain}';
+    const domain = '${randomizedDomain}';
     const userUUID = '${userUUID}';
 
     // Randomized constants
