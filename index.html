@@ -230,8 +230,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script>
-        
-
 function generateConfig() {
     const cleanIP = document.getElementById('cleanIP').value;
     const yourDomain = document.getElementById('yourDomain').value;
@@ -423,13 +421,14 @@ function generateConfig() {
         }
     };
 
-/ Respond with the JSON configuration
         const configOutput = document.getElementById('configOutput');
         configOutput.innerText = JSON.stringify(config, null, 4);
         configOutput.parentElement.classList.add('config-output-container');
+    
         const copyButton = document.getElementById('copyButton');
         copyButton.innerText = 'Copy Configuration';
         copyButton.removeAttribute('disabled');
+    
         const downloadButton = document.getElementById('downloadButton');
         downloadButton.removeAttribute('disabled');
     }
