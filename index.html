@@ -416,14 +416,6 @@ function generateConfig() {
         URL.revokeObjectURL(url);
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
-        new ClipboardJS('#copyButton');
-        document.getElementById('copyButton').addEventListener('click', function () {
-            const copyButton = this;
-            copyButton.innerText = 'Copied!';
-            copyButton.setAttribute('disabled', 'true');
-        });
-    });
 
     function generateRandomString(length, characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789') {
         let result = '';
