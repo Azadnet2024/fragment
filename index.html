@@ -55,21 +55,33 @@
             word-wrap: break-word;
         }
 
-        #copyButton {
-            background-color: #008080;
+        button {
+            background-color: #008080; /* Change this to your desired green color */
             color: #fff;
             border: none;
             padding: 10px;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
-            position: absolute; /* Changed position to absolute */
-            top: 10px; /* Adjusted top position */
-            right: 10px; /* Added right position */
+        }
+        
+        button:hover {
+            background-color: #005757; /* Change this to your desired green color on hover */
+        }
+        
+        #copyButton {
+            background-color: #008080; /* Change this to your desired green color */
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
         }
 
         #copyButton:hover {
-            background-color: #005757;
+            background-color: #005757; /* Change this to your desired green color on hover */
         }
 
         #copyButton[disabled] {
@@ -77,6 +89,20 @@
             cursor: not-allowed;
         }
 
+        button[type="button"] {
+            background-color: #FFD700; /* Change this to your desired yellow color */
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button[type="button"]:hover {
+            background-color: #FFC700; /* Change this to your desired yellow color on hover */
+        }
+        
         footer {
             text-align: center;
             margin-top: 20px;
