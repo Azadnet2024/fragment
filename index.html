@@ -219,45 +219,16 @@
         </div>
     </main>
 
-    <button id="cloudflare" type="button" onclick="https://deploy.workers.cloudflare.com/?url=https://github.com/GregBrimble/cf-workers-typescript-template">Deploy on Cloudflare Worker</button>
+    <button id="cloudflare" type="button" onclick="deployOnCloudflare()">Deploy on Cloudflare Worker</button>
 
     <footer>© Prepared by <a href="https://github.com/opiran-club">Farzad</a></footer>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script>
-function deployToCloudflare() {
-    const configOutput = document.getElementById('configOutput').innerText;
-    const workerDomain = 'your-worker-name.your-subdomain.workers.dev';
-    const email = 'your-cloudflare-email@example.com';
-    const apiKey = 'your-cloudflare-api-key';
-    const apiUrl = `https://api.cloudflare.com/client/v4/accounts/self/workers/scripts/${workerDomain}/content`;
-
-    const formData = new FormData();
-    formData.append('metadata', '');  // Add any other form fields as needed
-    formData.append('<any part name>', new Blob([configOutput], { type: 'application/javascript' }));
-
-    fetch(apiUrl, {
-        method: 'PUT',
-        headers: {
-            'X-Auth-Email': email,
-            'X-Auth-Key': apiKey,
-        },
-        body: formData,
-    })
-    .then(response => {
-        if (response.ok) {
-            alert('Configuration deployed successfully!');
-        } else {
-            alert('Failed to deploy configuration. Please check the console for details.');
-            console.error('Failed to deploy configuration:', response.statusText);
-        }
-    })
-    .catch(error => {
-        alert('An error occurred while deploying the configuration. Please check the console for details.');
-        console.error('Error deploying configuration:', error);
-    });
-}
+function deployOnCloudflare() {
+    window.location.href = "https://deploy.workers.cloudflare.com/?url=https://github.com/GregBrimble/cf-workers-typescript-template";
+  };
         
 function generateConfig() {
     const cleanIP = document.getElementById('cleanIP').value;
