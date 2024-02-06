@@ -35,6 +35,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 300px;
             text-align: left;
+            margin-left: 20px; /* Adjusted margin */
         }
 
         label {
@@ -62,6 +63,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            width: 100%;
         }
 
         button:hover {
@@ -168,7 +170,7 @@
         <label for="apiKey">Cloudflare API key (worker zone) (Optional):</label>
         <input type="text" id="apiKey" name="apikey" placeholder="your-cloudflare-api-key"><br>
         
-            <button type="button" onclick="generateConfig()">Generate Configuration</button>
+        <button type="button" onclick="generateConfig()">Generate Configuration</button>
         </form>
 
         <div class="output-container">
