@@ -10,6 +10,9 @@
     <h1>V2Ray Configuration Generator</h1>
     <form id="configForm">
 
+        <label for="cleanIP">Clean IP / Domain:</label>
+        <input type="text" id="cleanIP" name="cleanIP" placeholder="e.g., example.com , 1.1.1.1" required><br>
+        
         <label for="yourDomain">Your Domain:</label>
         <input type="text" id="yourDomain" name="yourDomain" placeholder="e.g., example.com" required><br>
         
@@ -39,6 +42,7 @@
 
     <script>
         function generateConfig() {
+            const cleanIP = document.getElementById('cleanIP').value;
             const yourDomain = document.getElementById('yourDomain').value;
             const port = document.getElementById('port').value;
             const userUUID = document.getElementById('userUUID').value;
@@ -107,7 +111,7 @@
                         "settings": {
                             "vnext": [
                                 {
-                                    "address": randomizedDomain,
+                                    "address": cleanIP,
                                     "port": port,
                                     "users": [
                                         {
@@ -208,51 +212,11 @@
                 }
             };
 
-            // Respond with the JSON configuration
-            document.getElementById('configOutput').innerText = `addEventListener('fetch', event => {
-    event.respondWith(handleRequest(event.request))
-})
-
-// Utility functions
-const selectRandomItem = (items) => items[Math.floor(Math.random() * items.length)];
-
-const generateRandomString = (length, characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789') => {
-    let result = '';
-    for (let i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return result;
-};
-
-const randomizeCase = (str) => str.split('').map(char => Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase()).join('');
-
-// Main handler function
-async function handleRequest(request) {
-    // Constants
-    const portsList = [443, 8443, 2053, 2096, 2087, 2083];
-    const domain = '${randomizedDomain}';
-    const userUUID = '${userUUID}';
-
-    // Randomized constants
-    const randomPort = selectRandomItem(portsList);
-    const randomizedDomain = '${randomizedDomain}';
-    const randomPath = '${randomPath}';
-
-    // Configuration object
-    const config = ${JSON.stringify(config, null, 4)};
-
-    // Respond with the JSON configuration
-    return new Response(JSON.stringify(config, null, 2), {
-        headers: { 'content-type': 'application/json' }
-    });
-}`;
+            // Display the JSON configuration
+            document.getElementById('configOutput').innerText = JSON.stringify(config, null, 2);
         }
 
         // Utility functions
-        function selectRandomItem(items) {
-            return items[Math.floor(Math.random() * items.length)];
-        }
-
         function generateRandomString(length, characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789') {
             let result = '';
             for (let i = 0; i < length; i++) {
