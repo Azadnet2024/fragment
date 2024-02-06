@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V2Ray Configuration Generator</title>
+    <title>OPIran Fragment Generator</title>
 </head>
 <body>
     <h1>V2Ray Configuration Generator</h1>
@@ -76,7 +77,7 @@
     const portsList = [443, 8443, 2053, 2096, 2087, 2083];
 
     // Randomized constants
-    const randomizedDomain = yourDomain.split('').map(char => Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase()).join('');
+    const randomizedDomain = yourDomain.toLowerCase().split('').map(char => Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase()).join('');
     const randomPath = path || '/' + generateRandomString(59);
 
     // Configuration object
@@ -255,9 +256,25 @@
         }
     };
 
-    // Respond with the JSON configuration
-    document.getElementById('configOutput').innerText = JSON.stringify(config, null, 4);
-}
+        // Respond with the JSON configuration
+        document.getElementById('configOutput').innerText = JSON.stringify(config, null, 4);
+
+        // Update the copy button text
+        const copyButton = document.getElementById('copyButton');
+        copyButton.innerText = 'Copy Configuration';
+        copyButton.removeAttribute('disabled');
+    }
+        document.addEventListener('DOMContentLoaded', function () {
+        // Initialize Clipboard.js
+        new ClipboardJS('#copyButton');
+
+        // Display a message when the copy is successful
+        document.getElementById('copyButton').addEventListener('click', function () {
+            const copyButton = this;
+            copyButton.innerText = 'Copied!';
+            copyButton.setAttribute('disabled', 'true');
+        });
+    });
         // Utility functions
         function generateRandomString(length, characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789') {
             let result = '';
