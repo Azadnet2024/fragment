@@ -55,7 +55,7 @@
             "port": "port",
             "users": [
               {
-                "id": "id",
+                "id": "userUUID",
                 "alterId": 0,
                 "email": "t@t.tt",
                 "security": "auto",
@@ -71,7 +71,7 @@
         "security": "tls",
         "tlsSettings": {
           "allowInsecure": true,
-          "serverName": "randomizeddomain",
+          "serverName": "randomizedDomain",
           "alpn": [
             "h2",
             "http/1.1"
@@ -80,9 +80,9 @@
           "show": false
         },
         "wsSettings": {
-          "path": "randomizedpath/?ed=2048",
+          "path": "randomPath",
           "headers": {
-            "Host": "randomizeddomain"
+            "Host": "randomizedDomain"
           }
         },
         "sockopt": {
