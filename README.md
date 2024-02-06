@@ -1,6 +1,6 @@
 # Fragment Tools
 
-** Exprimental **
+**Exprimental**
 
 Create worker code to create subscription link for fragments configs
 
