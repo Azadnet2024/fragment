@@ -84,6 +84,21 @@
             cursor: not-allowed;
         }
 
+        button[id="downloadButton"] {
+            background-color: #fff; /* White background */
+            color: #FF0000; /* Red text */
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-left: 10px; /* Add margin for spacing */
+        }
+        
+        button[id="downloadButton"]:hover {
+            background-color: #eee; /* Light gray background on hover */
+        }
+        
         button[id="cloudflare"] {
             background-color: #FFD700; /* Change this to your desired yellow color */
             color: #555;
@@ -189,7 +204,8 @@
         <label for="apiKey">Cloudflare API key (worker zone) (Optional):</label>
         <input type="text" id="apiKey" name="apikey" placeholder="your-cloudflare-api-key"><br>
 
-               <button type="button" onclick="generateConfig()">Generate Configuration</button>
+        <button type="button" onclick="generateConfig()">Generate Configuration</button>
+        <button id="downloadButton" type="button" onclick="downloadConfig()" disabled>Download Configuration</button>
         </form>
         
         <div class="output-container">
