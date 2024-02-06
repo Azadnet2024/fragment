@@ -12,6 +12,9 @@
         <label for="domain">Cloudflare CDN Domain:</label>
         <input type="text" id="domain" name="domain" placeholder="e.g., example.com" required><br>
 
+        <label for="domain">Your Domain:</label>
+        <input type="text" id="domain" name="domain" placeholder="e.g., example.com" required><br>
+        
         <label for="port">Port:</label>
         <select id="port" name="port">
             <option value="443">443</option>
@@ -136,7 +139,7 @@ const config = {
                 "wsSettings": {
                     "path": randomPath,
                     "headers": {
-                        "Host": domain
+                        "Host": Your Domain
                     }
                 },
                 "sockopt": {
