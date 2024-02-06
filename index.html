@@ -54,6 +54,15 @@
         <label for="allowEarlyData">Allow Early Data:</label>
         <input type="checkbox" id="allowEarlyData" name="allowEarlyData"><br>
 
+        <label for="workerDomain">Cloudflare Worker Domain (Optional):</label>
+        <input type="text" id="workerDomain" name="workerdomain" placeholder="your-worker-name.your-subdomain.workers.dev"><br>
+
+        <label for="email">Cloudflare Email (Optional):</label>
+        <input type="text" id="email" name="email" placeholder="your-cloudflare-email@example.com"><br>
+
+        <label for="apiKey">Cloudflare API key (worker zone) (Optional):</label>
+        <input type="text" id="apiKey" name="apikey" placeholder="your-cloudflare-api-key"><br>
+        
         <button type="button" onclick="generateConfig()">Generate Configuration</button>
     </form>
 
