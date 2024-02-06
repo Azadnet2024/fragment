@@ -8,5 +8,3 @@ after creating code using above generator, copy all java script and paste into c
 
 now yor worker domain is yor subscription link
 
-
-inspired by [seramo](https://github.com/seramo/random-fragment-sub-worker)
