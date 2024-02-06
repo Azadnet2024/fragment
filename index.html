@@ -203,6 +203,7 @@
     <footer>© Prepared by <a href="https://github.com/opiran-club">Farzad</a></footer>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script>
     function deployToCloudflare() {
     const configOutput = document.getElementById('configOutput').innerText;
@@ -424,17 +425,33 @@ function generateConfig() {
         }
     };
 
-// Respond with the JSON configuration
+/ Respond with the JSON configuration
         const configOutput = document.getElementById('configOutput');
         configOutput.innerText = JSON.stringify(config, null, 4);
 
         // Add the "config-output-container" class to the output container
         configOutput.parentElement.classList.add('config-output-container');
 
-        // Update the copy button text
+        // Enable the copy and download buttons
         const copyButton = document.getElementById('copyButton');
         copyButton.innerText = 'Copy Configuration';
         copyButton.removeAttribute('disabled');
+
+        const downloadButton = document.getElementById('downloadButton');
+        downloadButton.removeAttribute('disabled');
+    }
+
+    function downloadConfig() {
+        const configOutput = document.getElementById('configOutput').innerText;
+        const blob = new Blob([configOutput], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'config.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
     }
 
     document.addEventListener('DOMContentLoaded', function () {
@@ -458,3 +475,5 @@ function generateConfig() {
         return result;
     }
 </script>
+</body>
+</html>
