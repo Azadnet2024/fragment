@@ -56,7 +56,7 @@
         }
 
         button {
-            background-color: #008080; /* Change this to your desired green color */
+            background-color: #008080;
             color: #fff;
             border: none;
             padding: 10px;
@@ -89,7 +89,7 @@
             cursor: not-allowed;
         }
 
-        button[type="button"] {
+        button[id="cloudflare"] {
             background-color: #FFD700; /* Change this to your desired yellow color */
             color: #fff;
             border: none;
@@ -99,7 +99,7 @@
             transition: background-color 0.3s;
         }
         
-        button[type="button"]:hover {
+        button[id="cloudflare"]:hover {
             background-color: #FFC700; /* Change this to your desired yellow color on hover */
         }
         
@@ -187,7 +187,7 @@
         </div>
     </main>
 
-    <button type="button" onclick="deployToCloudflare()">Deploy on Cloudflare Worker</button>
+    <button id="cloudflare" type="button" onclick="deployToCloudflare()">Deploy on Cloudflare Worker</button>
 
     <footer>© Prepared by <a href="https://github.com/opiran-club">Farzad</a></footer>
 
