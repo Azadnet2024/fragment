@@ -9,11 +9,20 @@
 <body>
     <h1>V2Ray Configuration Generator</h1>
     <form id="configForm">
-        <label for="domain">Domain:</label>
+        <label for="port">Port:</label>
+        <input type="text" id="port" name="port" required><br>
+
+        <label for="uuid">User UUID:</label>
+        <input type="text" id="uuid" name="uuid" required><br>
+
+        <label for="domain">Cloudflare Domain:</label>
         <input type="text" id="domain" name="domain" required><br>
 
-        <label for="userUUID">User UUID:</label>
-        <input type="text" id="userUUID" name="userUUID" required><br>
+        <label for="tls">TLS: </label>
+        <select id="tls" name="tls">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select><br>
 
         <button type="button" onclick="generateConfig()">Generate Configuration</button>
     </form>
@@ -22,12 +31,18 @@
 
     <script>
         function generateConfig() {
+            const port = document.getElementById('port').value;
+            const uuid = document.getElementById('uuid').value;
             const domain = document.getElementById('domain').value;
-            const userUUID = document.getElementById('userUUID').value;
+            const tls = document.getElementById('tls').value === 'yes' ? true : false;
 
-            // Your logic for generating randomizedDomain and randomPath
-            const randomizedDomain = domain.toLowerCase(); // For example, convert domain to lowercase
-            const randomPath = '/' + generateRandomString(10); // For example, generate a random path
+            // Constants
+            const portsList = [443, 8443, 2053, 2096, 2087, 2083];
+
+            // Randomized constants
+            const randomPort = portsList[Math.floor(Math.random() * portsList.length)];
+            const randomizedDomain = domain.split('').map(char => Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase()).join('');
+            const randomPath = '/' + generateRandomString(59);
 
             // Configuration object
             const config = {
@@ -184,10 +199,15 @@
                 }
             };
 
+            // Respond with the JSON configuration
             document.getElementById('configOutput').innerText = JSON.stringify(config, null, 2);
         }
 
-        // Utility function for generating random strings
+        // Utility functions
+        function selectRandomItem(items) {
+            return items[Math.floor(Math.random() * items.length)];
+        }
+
         function generateRandomString(length, characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789') {
             let result = '';
             for (let i = 0; i < length; i++) {
