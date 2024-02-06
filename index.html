@@ -59,26 +59,56 @@
 
     <pre id="configOutput"></pre>
 
+    <button type="button" onclick="deployToCloudflare()">Deploy on Cloudflare Worker</button>
+
     <script>
-    function generateConfig() {
-    const cleanIP = document.getElementById('cleanIP').value;
-    const yourDomain = document.getElementById('yourDomain').value;
-    const port = document.getElementById('port').value;
-    const userUUID = document.getElementById('userUUID').value;
-    const path = document.getElementById('path').value;
-    const tls = document.getElementById('tls').checked;
-    const mux = document.getElementById('mux').checked;
-    const block = document.getElementById('block').checked;
-    const allowInsecure = document.getElementById('allowInsecure').checked;
-    const allowEarlyData = document.getElementById('allowEarlyData').checked;
-    const selectedProtocol = document.getElementById('protocol').value;
+        function deployToCloudflare() {
+            const configOutput = document.getElementById('configOutput').innerText;
 
-    // Constants
-    const portsList = [443, 8443, 2053, 2096, 2087, 2083];
+            // Your Cloudflare Worker URL
+            const workerUrl = 'https://your-worker-name.your-subdomain.workers.dev';
 
-    // Randomized constants
-    const randomizedDomain = yourDomain.toLowerCase().split('').map(char => Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase()).join('');
-    const randomPath = path || '/' + generateRandomString(59);
+            // Make a fetch request to update the worker script
+            fetch(workerUrl, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/javascript',
+                },
+                body: configOutput,
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Configuration deployed successfully!');
+                } else {
+                    alert('Failed to deploy configuration. Please check the console for details.');
+                    console.error('Failed to deploy configuration:', response.statusText);
+                }
+            })
+            .catch(error => {
+                alert('An error occurred while deploying the configuration. Please check the console for details.');
+                console.error('Error deploying configuration:', error);
+            });
+        }
+
+        function generateConfig() {
+            const cleanIP = document.getElementById('cleanIP').value;
+            const yourDomain = document.getElementById('yourDomain').value;
+            const port = document.getElementById('port').value;
+            const userUUID = document.getElementById('userUUID').value;
+            const path = document.getElementById('path').value;
+            const tls = document.getElementById('tls').checked;
+            const mux = document.getElementById('mux').checked;
+            const block = document.getElementById('block').checked;
+            const allowInsecure = document.getElementById('allowInsecure').checked;
+            const allowEarlyData = document.getElementById('allowEarlyData').checked;
+            const selectedProtocol = document.getElementById('protocol').value;
+
+            // Constants
+            const portsList = [443, 8443, 2053, 2096, 2087, 2083];
+
+            // Randomized constants
+            const randomizedDomain = yourDomain.toLowerCase().split('').map(char => Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase()).join('');
+            const randomPath = path || '/' + generateRandomString(59);
 
     // Configuration object
     const config = {
@@ -256,25 +286,27 @@
         }
     };
 
-        // Respond with the JSON configuration
-        document.getElementById('configOutput').innerText = JSON.stringify(config, null, 4);
+            // Respond with the JSON configuration
+            document.getElementById('configOutput').innerText = JSON.stringify(config, null, 4);
 
-        // Update the copy button text
-        const copyButton = document.getElementById('copyButton');
-        copyButton.innerText = 'Copy Configuration';
-        copyButton.removeAttribute('disabled');
-    }
+            // Update the copy button text
+            const copyButton = document.getElementById('copyButton');
+            copyButton.innerText = 'Copy Configuration';
+            copyButton.removeAttribute('disabled');
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
-        // Initialize Clipboard.js
-        new ClipboardJS('#copyButton');
+            // Initialize Clipboard.js
+            new ClipboardJS('#copyButton');
 
-        // Display a message when the copy is successful
-        document.getElementById('copyButton').addEventListener('click', function () {
-            const copyButton = this;
-            copyButton.innerText = 'Copied!';
-            copyButton.setAttribute('disabled', 'true');
+            // Display a message when the copy is successful
+            document.getElementById('copyButton').addEventListener('click', function () {
+                const copyButton = this;
+                copyButton.innerText = 'Copied!';
+                copyButton.setAttribute('disabled', 'true');
+            });
         });
-    });
+
         // Utility functions
         function generateRandomString(length, characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789') {
             let result = '';
