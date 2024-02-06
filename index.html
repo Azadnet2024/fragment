@@ -99,7 +99,7 @@
                             "vnext": [
                                 {
                                     "address": randomizedDomain,
-                                    "port": 443, // Modify as needed
+                                    "port": port,
                                     "users": [
                                         {
                                             "id": userUUID,
@@ -129,7 +129,7 @@
                             "wsSettings": {
                                 "path": randomPath,
                                 "headers": {
-                                    "Host": randomizedDomain
+                                    "Host": Cloudflare Domain
                                 }
                             },
                             "sockopt": {
