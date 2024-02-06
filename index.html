@@ -150,19 +150,16 @@
     <main>
         <form id="configForm">
 
-            
-        <label for="cleanIP">Clean IP / Domain:</label>
-        <input type="text" id="cleanIP" name="cleanIP" placeholder="محل قرارگیری آی پی تمیز یا دامنه" required><br>
+    <label for="cleanIP">Clean IP / Domain:</label>
+    <input type="text" id="cleanIP" name="cleanIP" style="margin-bottom: 10px;" placeholder="محل قرارگیری آی پی تمیز یا دامنه" required><br>
 
-            
-        <label for="yourDomain">Your Domain:</label>
-        <input type="text" id="yourDomain" name="yourDomain" placeholder="محل قرارگیری دامنه کانفیگ یا وپن" required><br>
+    <label for="yourDomain">Your Domain:</label>
+    <input type="text" id="yourDomain" name="yourDomain" style="margin-bottom: 10px;" placeholder="محل قرارگیری دامنه کانفیگ یا وپن" required><br>
 
-
-            
-        <label for="port">Port:</label>
-        <select id="port" name="port">
-            <option value="443">443</option>
+    <!-- Add margin-bottom to create space between questions -->
+    <label for="port">Port:</label>
+    <select id="port" name="port" style="margin-bottom: 10px;">
+      <option value="443">443</option>
             <option value="8443">8443</option>
             <option value="2053">2053</option>
             <option value="2096">2096</option>
@@ -179,41 +176,38 @@
 
         <h3>HTTP  port:  80, 8080, 8880, 2052, 2082, 2086, 2095
             HTTPS port: 443, 2053, 2083, 2087, 2096, 8443</h3>
-            
-        <label for="userUUID">User UUID:</label>
-        <input type="text" id="userUUID" name="userUUID" placeholder="محل قرارگیری یوآیدی کانفیگ" required><br>
 
+    <label for="userUUID">User UUID:</label>
+    <input type="text" id="userUUID" name="userUUID" style="margin-bottom: 10px;" placeholder="محل قرارگیری یوآیدی کانفیگ" required><br>
 
-            
-        <label for="protocol">Protocol:</label>
-        <select id="protocol" name="protocol">
-            <option value="vless">VLESS</option>
+    <label for="protocol">Protocol:</label>
+    <select id="protocol" name="protocol" style="margin-bottom: 10px;">
+       <option value="vless">VLESS</option>
             <option value="vmess">VMESS</option>
         </select><br>
 
+    <label for="path">Path (?ed=2048):</label>
+    <input type="text" id="path" name="path" style="margin-bottom: 10px;" placeholder="Enter Path"><br>
 
-            
-        <label for="path">Path (?ed=2048):</label>
-        <input type="text" id="path" name="path" placeholder="Enter Path"><br>
-        
-        <label for="tls">Enable TLS:</label>
-        <input type="checkbox" id="tls" name="tls"><br>
+    <!-- Add margin-bottom to create space between questions -->
+    <label for="tls">Enable TLS:</label>
+    <input type="checkbox" id="tls" name="tls"><br>
 
-        <label for="mux">Enable Mux:</label>
-        <input type="checkbox" id="mux" name="mux"><br>
+    <label for="mux">Enable Mux:</label>
+    <input type="checkbox" id="mux" style="margin-bottom: 5px;" name="mux"><br>
 
-        <label for="block">ِDirect Iran and China domains:</label>
-        <input type="checkbox" id="block" name="block"><br>
-        
-        <label for="allowInsecure">Allow Insecure:</label>
-        <input type="checkbox" id="allowInsecure" name="allowInsecure"><br>
+    <label for="block">ِDirect Iran and China domains:</label>
+    <input type="checkbox" id="block" style="margin-bottom: 5px;" name="block"><br>
 
-        <label for="allowEarlyData">Allow Early Data (TCP non delay):</label>
-        <input type="checkbox" id="allowEarlyData" name="allowEarlyData"><br>
+    <label for="allowInsecure">Allow Insecure:</label>
+    <input type="checkbox" id="allowInsecure" style="margin-bottom: 5px;" name="allowInsecure"><br>
 
-        <button type="button" onclick="generateConfig()">Generate Configuration</button>
-        <button id="downloadButton" type="button" onclick="downloadConfig()" disabled>Download Configuration</button>
-        </form>
+    <label for="allowEarlyData">Allow Early Data (TCP non delay):</label>
+    <input type="checkbox" id="allowEarlyData" style="margin-bottom: 5px;" name="allowEarlyData"><br>
+
+    <button type="button" onclick="generateConfig()">Generate Configuration</button>
+    <button id="downloadButton" type="button" onclick="downloadConfig()" disabled>Download Configuration</button>
+</form>
         
         <div class="output-container">
             <button id="copyButton" type="button" onclick="copyConfiguration()" disabled>Copy Configuration</button>
