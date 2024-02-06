@@ -44,12 +44,6 @@
             margin-left: 20px;
         }
 
-        .output-container {
-            width: 600px;
-            margin-left: 10px;
-            position: left;
-        }
-
         pre {
             white-space: pre-wrap;
             word-wrap: break-word;
@@ -104,13 +98,20 @@
             background-color: #FFC700; /* Change this to your desired yellow color on hover */
         }
 
+        .output-container {
+            width: 600px;
+            margin-left: 10px;
+            position: left;
+            max-height: 400px;
+        }
+
         .config-output-container {
             width: 600px;
             margin-left: 20px;
             position: relative;
-            max-height: 600px; /* Set the maximum height to enable scrolling */
+            max-height: 400px; /* Set the maximum height to enable scrolling */
             overflow-y: auto; /* Enable vertical scrolling if the content exceeds the maximum height */
-            font-size: 16px; /* Set the font size for the JSON configuration */
+            font-size: 14px; /* Set the font size for the JSON configuration */
         }
         
         footer {
