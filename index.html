@@ -32,7 +32,7 @@
         font-size: 0.75rem;
         color: #555;
         text-align: left;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
 
     main {
@@ -137,9 +137,8 @@
 
     <label for="wsHost">WS / gRPC host </label>
     <input type="text" id="wsHost" name="wsHost" style="margin-bottom: 5px;" placeholder="محل قرارگیری دامنه کانفیگ یا وپن" ><br>
-            <h3> ⚠️ </h3>
-            <h3> For non-tls config :  Required </h3>
-            <h3> For tls config : optional</h3>
+            <h3> ⚠️ For non-tls config :  Required </h3>
+            <h3> ⚠️ For tls config : optional</h3>
     <!-- Add margin-bottom to create space between questions -->
     <label for="port">Port:</label>
     <select id="port" name="port" style="margin-bottom: 10px;">
@@ -157,9 +156,8 @@
             <option value="2086">2086</option>
             <option value="2095">2095</option>
         </select><br>
-            <h3> ⚠️ </h3>
-            <h3> For non-tls config :  80, 8080, 8880, 2052, 2082, 2086, 2095 </h3>
-            <h3> For tls config : 443, 2053, 2083, 2087, 2096, 8443</h3>
+            <h3> ⚠️ For non-tls config :  80, 8080, 8880, 2052, 2082, 2086, 2095 </h3>
+            <h3> ⚠️ For tls config : 443, 2053, 2083, 2087, 2096, 8443</h3>
 
     <label for="userUUID">User UUID:</label>
     <input type="text" id="userUUID" name="userUUID" style="margin-bottom: 10px;" placeholder="محل قرارگیری یوآیدی کانفیگ" required><br>
@@ -181,7 +179,7 @@
 
     <!-- Add margin-bottom to create space between questions -->
     <label for="tls" title="در صورت انتخاب , به پورت دقت کنید">Enable TLS:</label>
-    <input type="checkbox" id="tls" name="tls"><br>
+    <input type="checkbox" id="tls" name="tls" style="margin-bottom: 10px;"><br>
 
     <label for="fingerprint">Fingerprint (utls) (optional):</label>
     <select id="fingerprint" name="fingerprint" style="margin-bottom: 10px;">
@@ -196,16 +194,16 @@
         </select><br>
 
     <label for="mux" title="کاهش زمان تاخیر در ارسال داده ها">Enable Mux:</label>
-    <input type="checkbox" id="mux" style="margin-bottom: 5px;" name="mux"><br>
+    <input type="checkbox" id="mux" style="margin-bottom: 10px;" name="mux"><br>
     
     <label for="block" title="ارسال مستقیم ترافیک به دامنه های ایرانی و چینی">ِDirect Iran and China domains:</label>
-    <input type="checkbox" id="block" style="margin-bottom: 5px;" name="block"><br>
+    <input type="checkbox" id="block" style="margin-bottom: 10px;" name="block"><br>
 
     <label for="allowInsecure" title="در صورت استفاده از ای پی در اس ان ای روشن شود">Allow Insecure:</label>
-    <input type="checkbox" id="allowInsecure" style="margin-bottom: 5px;" name="allowInsecure"><br>
+    <input type="checkbox" id="allowInsecure" style="margin-bottom: 10px;" name="allowInsecure"><br>
 
     <label for="allowEarlyData" title="API بهبود بارگزاری دیتا در پروتوکل مبتنی بر ">Allow Early Data (TCP non delay):</label>
-    <input type="checkbox" id="allowEarlyData" style="margin-bottom: 5px;" name="allowEarlyData"><br>
+    <input type="checkbox" id="allowEarlyData" style="margin-bottom: 10px;" name="allowEarlyData"><br>
 
     <button type="button" onclick="generateConfig()">Generate Configuration</button>
     <button id="downloadButton" type="button" onclick="downloadConfig()" disabled>Download Configuration</button>
