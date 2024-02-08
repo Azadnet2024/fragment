@@ -15,22 +15,36 @@
         min-height: 100vh;
     }
 
-    main {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    }
-    
-    form {
-        background-color: #fff;
-        padding: 1.5rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        width: 18rem;
-        text-align: left;
-        margin-left: 1.5rem;
-        flex-shrink: 0;
+      .container {
+          display: flex;
+      }
+      
+      main {
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          width: 100%;
+      }
+      
+      form {
+          background-color: #fff;
+          padding: 1.5rem;
+          border-radius: 0.5rem;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          width: 18rem;
+          text-align: left;
+          margin-left: 1.5rem;
+          flex-shrink: 0;
+      }
+      
+      .output-container {
+          width: 18rem;
+          margin-left: 1.5rem;
+          position: relative;
+          max-height: 15rem;
+          font-size: 0.875rem;
+          overflow-y: auto;
+      }
      
     h1 {
         color: #008080;
@@ -89,15 +103,6 @@
         background-color: #eee;
     }
 
-    .output-container {
-        width: 18rem;
-        margin-left: 0.75rem;
-        position: relative;
-        max-height: 15rem;
-        font-size: 0.875rem;
-        overflow-y: auto;
-    }
-
     .config-output-container {
         width: 18rem;
         margin-left: 1.5rem;
@@ -128,7 +133,8 @@
     اکنون دامنه ورکر شما لینک اشتراک شماست</h2>
 
     <main>
-        <form id="configForm">
+       <div class="container">
+    <form id="configForm">
 
     <label for="cleanIP">Clean IP / Domain (e.g. iranserver.com):</label>
     <input type="text" id="cleanIP" name="cleanIP" style="margin-bottom: 10px;" placeholder="محل قرارگیری آی پی تمیز یا دامنه" required><br>
@@ -209,10 +215,11 @@
     <button type="button" onclick="generateConfig()">Generate Configuration</button>
     <button id="downloadButton" type="button" onclick="downloadConfig()" disabled>Download Configuration</button>
 </form>
-        
-        <div class="output-container">
-            <pre id="configOutput"></pre>
-        </div>
+
+    <div class="output-container">
+        <pre id="configOutput"></pre>
+    </div>
+</div>
     </main>
     
     <a href="https://workers.cloudflare.com/playground"_blank">
