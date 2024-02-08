@@ -418,35 +418,47 @@ function generateConfig() {
         }
     };
 
-        const configOutput = document.getElementById('configOutput');
-        configOutput.innerText = JSON.stringify(config, null, 4);
-        configOutput.parentElement.classList.add('config-output-container');
-    
-        const downloadButton = document.getElementById('downloadButton');
-        downloadButton.removeAttribute('disabled');
-    }
-        
-    function downloadConfig() {
-        const configOutput = document.getElementById('configOutput').innerText;
-        const blob = new Blob([configOutput], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'config.json';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-    }
-
-
-    function generateRandomString(length, characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789') {
-        let result = '';
-        for (let i = 0; i < length; i++) {
-            result += characters.charAt(Math.floor(Math.random() * characters.length));
+           // Convert the config object to a string with formatted JSON
+            const formattedConfig = JSON.stringify(config, replacer, 2);
+            
+            // Display the formatted JSON in the configOutput element
+            const configOutput = document.getElementById('configOutput');
+            configOutput.innerText = formattedConfig;
+            configOutput.parentElement.classList.add('config-output-container');
+            
+            // Enable the download button
+            const downloadButton = document.getElementById('downloadButton');
+            downloadButton.removeAttribute('disabled');
         }
-        return result;
-    }
-</script>
+
+        function downloadConfig() {
+            // Retrieve the formatted JSON from the configOutput element
+            const configOutput = document.getElementById('configOutput').innerText;
+            
+            // Create a Blob containing the JSON data
+            const blob = new Blob([configOutput], { type: 'application/json' });
+            
+            // Create a download link
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'config.json';
+            
+            // Trigger a click on the link to start the download
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            // Revoke the Object URL to free up resources
+            URL.revokeObjectURL(a.href);
+        }
+
+        // Replacer function for special formatting
+        const replacer = (key, value) => {
+            if (key === "servers" || key === "domain") {
+                return value.map((item) => `"${item}"`).join(", ");
+            }
+            return value;
+        };
+    </script>
 </body>
 </html>
