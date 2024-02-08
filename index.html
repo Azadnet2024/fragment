@@ -166,6 +166,12 @@
             <option value="vmess">VMESS</option>
         </select><br>
 
+    <label for="transport">Transport:</label>
+    <select id="transport" name="transport" style="margin-bottom: 10px;">
+       <option value="ws">WS</option>
+            <option value="grpc">gRPC</option>
+        </select><br>
+            
     <label for="path">Path (e.g. /?ed=2048):</label>
     <input type="text" id="path" name="path" style="margin-bottom: 10px;" placeholder="Enter Path"><br>
 
@@ -213,6 +219,7 @@ function generateConfig() {
     const allowInsecure = document.getElementById('allowInsecure').checked;
     const allowEarlyData = document.getElementById('allowEarlyData').checked;
     const selectedProtocol = document.getElementById('protocol').value;
+    const selectedTransport = document.getElementById('transport').value;
     const portsList = [443, 8443, 2053, 2096, 2087, 2083, 80, 8080, 8880, 2052, 2082, 2086, 2095];
     const randomizedDomain = yourDomain.toLowerCase().split('').map(char => Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase()).join('');
     const randomPath = path;
@@ -285,15 +292,14 @@ function generateConfig() {
                     ]
                 },
                 "streamSettings": {
-                    "network": "ws",
+                    "network": selectedProtocol ? "ws" : "grpc",
                     "security": tls ? "tls" : "none",
                     "tlsSettings": {
-                        "allowInsecure": allowInsecure ? "true" : "false",
+                        "allowInsecure": allowInsecure ? true : false,
                         "serverName": randomizedDomain,
                         "alpn": [
                             "h2",
-                            "http/1.1",
-                            "fakedns"
+                            "http/1.1"
                         ],
                         "fingerprint": "chrome",
                         "show": false
@@ -308,11 +314,11 @@ function generateConfig() {
                         "dialerProxy": "fragment",
                         "tcpKeepAliveIdle": 100,
                         "mark": 255,
-                        "tcpNoDelay": allowEarlyData ? "true" : "false",
+                        "tcpNoDelay": allowEarlyData ? true : false,
                     }
                 },
                 "mux": {
-                    "enabled": mux ? "true" : "false",
+                    "enabled": mux ? true : false,
                     "concurrency": mux ? 8 : -1 
                 }
             },
@@ -329,7 +335,7 @@ function generateConfig() {
                 },
                 "streamSettings": {
                     "sockopt": {
-                        "tcpNoDelay": allowEarlyData ? "true" : "false",
+                        "tcpNoDelay": allowEarlyData ? true : false,
                         "tcpKeepAliveIdle": 100
                     }
                 }
@@ -368,7 +374,7 @@ function generateConfig() {
                         "domain:ir",
                         "geosite:cn"
                     ],
-                    "enabled": block ? "true" : "false"
+                    "enabled": block ? true : false,
                 },
                 {
                     "id": "5425034033205580637",
@@ -379,7 +385,7 @@ function generateConfig() {
                         "geoip:cn",
                         "geoip:ir"
                     ],
-                    "enabled": block ? "true" : "false"
+                    "enabled": block ? true : false,
                 },
                 {
                     "id": "5627785659655799759",
