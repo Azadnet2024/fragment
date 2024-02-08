@@ -113,7 +113,6 @@
         color: #555;
     }
 </style>
-
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -434,20 +433,20 @@ function generateConfig() {
         function downloadConfig() {
             // Retrieve the formatted JSON from the configOutput element
             const configOutput = document.getElementById('configOutput').innerText;
-            
+
             // Create a Blob containing the JSON data
             const blob = new Blob([configOutput], { type: 'application/json' });
-            
+
             // Create a download link
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
             a.download = 'config.json';
-            
+
             // Trigger a click on the link to start the download
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
-            
+
             // Revoke the Object URL to free up resources
             URL.revokeObjectURL(a.href);
         }
