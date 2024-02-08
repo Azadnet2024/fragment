@@ -31,7 +31,7 @@
     h3 {
         font-size: 0.75rem;
         color: #555;
-        text-align: center;
+        text-align: left;
         margin-bottom: 2rem;
     }
 
@@ -136,7 +136,7 @@
     <input type="text" id="yourDomain" name="yourDomain" style="margin-bottom: 10px;" placeholder="محل قرارگیری دامنه کانفیگ یا وپن" required><br>
 
     <label for="wsHost">WS / gRPC host </label>
-    <input type="text" id="yourDomain" name="yourDomain" style="margin-bottom: 10px;" placeholder="محل قرارگیری دامنه کانفیگ یا وپن" required><br>
+    <input type="text" id="wsHost" name="wsHost" style="margin-bottom: 5px;" placeholder="محل قرارگیری دامنه کانفیگ یا وپن" ><br>
             <h3> ⚠️ </h3>
             <h3> For non-tls config :  Required </h3>
             <h3> For tls config : optional</h3>
@@ -232,7 +232,7 @@ function generateConfig() {
     const path = document.getElementById('path').value;
     const tls = document.getElementById('tls').checked;
     const fingerprint = document.getElementById('fingerprint').value;
-    const fingerprintsList = [chrome, firefox, ios, qq, safari, edge, 360, android];
+    const fingerprintsList = ['chrome', 'firefox', 'ios', 'qq', 'safari', 'edge', '360', 'android'];
     const mux = document.getElementById('mux').checked;
     const block = document.getElementById('block').checked;
     const allowInsecure = document.getElementById('allowInsecure').checked;
