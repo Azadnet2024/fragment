@@ -14,7 +14,6 @@ function generateConfig() {
     const selectedTransport = document.getElementById('transport').value;
     const portsList = [443, 8443, 2053, 2096, 2087, 2083, 80, 8080, 8880, 2052, 2082, 2086, 2095];
     const randomizedDomain = yourDomain.toLowerCase().split('').map(char => getRandomBoolean(0.5) ? char.toUpperCase() : char.toLowerCase()).join('');
-    const randomPath = path;
     const config = {
         "log": {
             "access": "",
@@ -97,7 +96,7 @@ function generateConfig() {
                         "show": false
                     },
                     "wsSettings": {
-                        "path": randomPath,
+                        "path": Path,
                         "headers": {
                             "Host": wsHost
                         }
