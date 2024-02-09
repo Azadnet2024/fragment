@@ -13,7 +13,7 @@ function generateConfig() {
     const selectedProtocol = document.getElementById('protocol').value;
     const selectedTransport = document.getElementById('transport').value;
     const randomizedDomain = yourDomain.toLowerCase().split('').map(char => getRandomBoolean(0.5) ? char.toUpperCase() : char.toLowerCase()).join('');
-    const randomizedpath = path;
+    const randomizedPath = path;
     const config = {
         "log": {
             "access": "",
