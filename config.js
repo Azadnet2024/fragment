@@ -96,7 +96,7 @@ function generateConfig() {
                         "show": false
                     },
                     "wsSettings": {
-                        "path": randomizedpath,
+                        "path": randomizedPath,
                         "headers": {
                             "Host": wsHost
                         }
