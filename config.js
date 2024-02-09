@@ -1,5 +1,3 @@
-export { generateConfig, downloadConfig };
-
 function generateConfig() {
     
     const cleanIP = document.getElementById('cleanIP').value;
