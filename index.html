@@ -15,20 +15,18 @@
     <h2>پس از ایجاد کد با استفاده از فرم، کانفیگ را کپی کرده و در کلودفلر ورکر قرار دهید یا می توانید از دپلوی در کلودفلر استفاده کنید
     اکنون دامنه ورکر شما لینک اشتراک شماست</h2>
 
-    <main>
-       <div class="container">
+<main>
+    <div class="container">
     <form id="configForm">
 
     <label for="cleanIP">Clean IP / Domain (e.g. iranserver.com):</label>
-    <input type="text" id="cleanIP" name="cleanIP" style="margin-bottom: 10px;" placeholder="محل قرارگیری آی پی تمیز یا دامنه" required><br>
+    <input type="text" id="cleanIP" name="cleanIP" style="margin-bottom: 10px;" placeholder="محل قرارگیری آی پی تمیز یا دامنه"><br>
 
     <label for="yourDomain">Your Domain:</label>
-    <input type="text" id="yourDomain" name="yourDomain" style="margin-bottom: 10px;" placeholder="محل قرارگیری دامنه کانفیگ یا وپن" required><br>
+    <input type="text" id="yourDomain" name="yourDomain" style="margin-bottom: 10px;" placeholder="محل قرارگیری دامنه کانفیگ یا وپن"><br>
 
     <label for="wsHost">WS / gRPC host </label>
-    <input type="text" id="wsHost" name="wsHost" style="margin-bottom: 1px;" placeholder="محل قرارگیری دامنه کانفیگ یا وپن"><br>
-            <h3> ⚠️ For non-tls config :  Required ⚠️</h3>
-            <h3> ⚠️ For tls config : optional ⚠️</h3>
+    <input type="text" id="wsHost" name="wsHost" style="margin-bottom: 1px;" placeholder="محل قرارگیری دامنه کانفیگ یا وپن"><br> <h3> ⚠️ For non-tls config ⚠️</h3>
 
     <label for="port">Port:</label>
     <select id="port" name="port" style="margin-bottom: 1px;">
@@ -71,16 +69,16 @@
     <input type="checkbox" id="tls" name="tls" style="margin-bottom: 10px;"><br>
 
     <label for="mux" title="کاهش زمان تاخیر در ارسال داده ها">Enable Mux:</label>
-    <input type="checkbox" id="mux" style="margin-bottom: 10px;" name="mux"><br>
+    <input type="checkbox" id="mux" name="mux" style="margin-bottom: 10px;"><br>
     
     <label for="block" title="ارسال مستقیم ترافیک به دامنه های ایرانی و چینی">ِDirect Iran and China domains:</label>
-    <input type="checkbox" id="block" style="margin-bottom: 10px;" name="block"><br>
+    <input type="checkbox" id="block" name="block" style="margin-bottom: 10px;"><br>
 
     <label for="allowInsecure" title="در صورت استفاده از ای پی در اس ان ای روشن شود">Allow Insecure:</label>
-    <input type="checkbox" id="allowInsecure" style="margin-bottom: 10px;" name="allowInsecure"><br>
+    <input type="checkbox" id="allowInsecure" name="allowInsecure" style="margin-bottom: 10px;"><br>
 
     <label for="allowEarlyData" title="API بهبود بارگزاری دیتا در پروتوکل مبتنی بر TCP non delay">Allow Early Data (TCP non delay):</label>
-    <input type="checkbox" id="allowEarlyData" style="margin-bottom: 10px;" name="allowEarlyData"><br>
+    <input type="checkbox" id="allowEarlyData" name="allowEarlyData" style="margin-bottom: 10px;"><br>
 
     <button type="button" onclick="generateConfig()">Generate Configuration</button>
 
@@ -92,11 +90,11 @@
         <pre id="configOutput"></pre>
     </div>
 </div>
-    </main>
+</main>
     
     <a href="https://workers.cloudflare.com/playground" target="_blank">
 
-      <img src="https://deploy.workers.cloudflare.com/button?paid=true" alt="Deploy to Cloudflare Workers" />
+      <img src="https://deploy.workers.cloudflare.com/button?paid=true" alt="Deploy to Cloudflare Workers"/>
     </a>
     
     <footer>© Prepared by <a href="https://github.com/opiran-club/worker_fragment_creator">FaRzAd</a></footer>
