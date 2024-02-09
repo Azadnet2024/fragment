@@ -7,7 +7,6 @@ function generateConfig() {
     const path = document.getElementById('path').value;
     const tls = document.getElementById('tls').checked;
     const fingerprint = document.getElementById('fingerprint').value;
-    const fingerprintsList = ['chrome', 'firefox', 'ios', 'qq', 'safari', 'edge', '360', 'android'];
     const mux = document.getElementById('mux').checked;
     const block = document.getElementById('block').checked;
     const allowInsecure = document.getElementById('allowInsecure').checked;
