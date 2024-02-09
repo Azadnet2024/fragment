@@ -212,4 +212,8 @@ function downloadConfig() {
     }
     return value;
     };
+function getRandomBoolean(probability) {
+    return Math.random() < probability;
+}
+
 export { generateConfig, downloadConfig };
