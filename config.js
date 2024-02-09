@@ -66,7 +66,7 @@ function generateConfig() {
         "outbounds": [
             {
                 "tag": "proxy",
-                "protocol": selectedProtocol === "trojan" ? "trojan" : (selectedProtocol === "vless" ? "vless" : "vmess"),
+                "protocol": selectedProtocol ? "vless" : "vmess",
                 "settings": {
                     "vnext": [
                         {
