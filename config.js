@@ -6,7 +6,6 @@ function generateConfig() {
     const userUUID = document.getElementById('userUUID').value;
     const path = document.getElementById('path').value;
     const tls = document.getElementById('tls').checked;
-    const fingerprint = document.getElementById('fingerprint').value;
     const mux = document.getElementById('mux').checked;
     const block = document.getElementById('block').checked;
     const allowInsecure = document.getElementById('allowInsecure').checked;
@@ -94,7 +93,7 @@ function generateConfig() {
                             "h2",
                             "http/1.1"
                         ],
-                        "fingerprint": fingerprint,
+                        "fingerprint": "safari",
                         "show": false
                     },
                     "wsSettings": {
