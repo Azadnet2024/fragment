@@ -83,7 +83,7 @@ function generateConfig() {
                     ]
                 },
                 "streamSettings": {
-                    "network": selectedTransport ? "tls" : "none",
+                    "network": selectedTransport,
                     "security": tls ? "tls" : "none",
                     "tlsSettings": {
                         "allowInsecure": allowInsecure ? true : false,
