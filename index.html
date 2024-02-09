@@ -438,42 +438,22 @@ function generateConfig() {
             ]
         }
     };
-
-           // Convert the config object to a string with formatted JSON
-            const formattedConfig = JSON.stringify(config, replacer, 2);
-            
-            // Display the formatted JSON in the configOutput element
-            const configOutput = document.getElementById('configOutput');
-            configOutput.innerText = formattedConfig;
-            configOutput.parentElement.classList.add('config-output-container');
-            
-            // Enable the download button
-            const downloadButton = document.getElementById('downloadButton');
-            downloadButton.removeAttribute('disabled');
+    const formattedConfig = JSON.stringify(config, replacer, 2);
+    const configOutput = document.getElementById('configOutput');
+    configOutput.innerText = formattedConfig;
+    configOutput.parentElement.classList.add('config-output-container');
+    const downloadButton = document.getElementById('downloadButton');
+    downloadButton.removeAttribute('disabled');
         }
-
         function downloadConfig() {
-            // Retrieve the formatted JSON from the configOutput element
             const configOutput = document.getElementById('configOutput').innerText;
-
-            // Create a Blob containing the JSON data
             const blob = new Blob([configOutput], { type: 'application/json' });
-
-            // Create a download link
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
             a.download = 'config.json';
-
-            // Trigger a click on the link to start the download
-            document.body.appendChild(a);
             a.click();
-            document.body.removeChild(a);
-
-            // Revoke the Object URL to free up resources
             URL.revokeObjectURL(a.href);
         }
-
-        // Replacer function for special formatting
         const replacer = (key, value) => {
             if (key === "servers" || key === "domain") {
                 return value.map((item) => `"${item}"`).join(", ");
