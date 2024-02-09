@@ -1,4 +1,5 @@
 function generateConfig() {
+    
     const cleanIP = document.getElementById('cleanIP').value;
     const yourDomain = document.getElementById('yourDomain').value;
     const wsHost = document.getElementById('wsHost').value;
@@ -226,3 +227,5 @@ function generateRandomString(length, characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZab
     }
     return result;
 }
+
+export { generateConfig, downloadConfig };
