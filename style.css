@@ -1,1 +1,130 @@
+    body {
+        font-family: 'Poppins', 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
 
+    .container {
+        display: flex;
+    }
+
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    form {
+        background-color: #f4f4f4;
+        position: left;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 30rem;
+        text-align: left;
+        margin-left: 1.5rem;
+        flex-shrink: 0;
+    }
+
+    .output-container {
+        background: #f4f4f4;
+        color: #fff;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 30rem;
+        margin-left: 1.5rem;
+        position: relative;
+        max-height: 40rem;
+        font-size: 1rem;
+        overflow-y: auto;
+    }
+
+    h1 {
+        font-family: 'Poppins', sans-serif;
+        color: #008080;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    h2 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
+        color: #555;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    h3 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.75rem;
+        color: #555;
+        text-align: left;
+        margin-bottom: 1rem;
+    }
+
+    pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    button {
+        background-color: #008080;
+        color: #fff;
+        border: none;
+        padding: 1rem;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-left: 1.5rem;
+        margin-top: 1rem;
+    }
+
+    button:hover {
+        background-color: #005757;
+    }
+
+    button[id="downloadButton"] {
+        background-color: #FF0000;
+        color: #fff;
+        border: none;
+        padding: 1rem;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-left: 1.5rem;
+        margin-top: 1rem;
+    }
+
+    button[id="downloadButton"]:hover {
+        background-color: #eee;
+    }
+
+    .config-output-container {
+        background: #f4f4f4;
+        color: #555;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 35rem;
+        margin-left: 1.5rem;
+        position: relative;
+        max-height: 40rem;
+        font-size: 1rem;
+        overflow-y: auto;
+    }
+
+    footer {
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+        margin-top: 1.5rem;
+        color: #555;
+    }
