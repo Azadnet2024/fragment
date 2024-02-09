@@ -202,20 +202,15 @@ return config;
 function downloadConfig() {
     const configOutput = document.getElementById('configOutput').innerText;
     const blob = new Blob([configOutput], { type: 'application/json' });
+    const url = window.URL.createObjectURL(blob);
 
-    if (window.navigator.msSaveOrOpenBlob) {
-        // For IE
-        window.navigator.msSaveOrOpenBlob(blob, 'config.json');
-    } else {
-        const a = document.createElement('a');
-        const url = window.URL.createObjectURL(blob);
-        a.href = url;
-        a.download = 'config.json';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(url);
-    }
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'config.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
 }
 
 const replacer = (key, value) => {
