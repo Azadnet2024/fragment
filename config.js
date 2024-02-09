@@ -12,7 +12,7 @@ function generateConfig() {
     const allowEarlyData = document.getElementById('allowEarlyData').checked;
     const selectedProtocol = document.getElementById('protocol').value;
     const selectedTransport = document.getElementById('transport').value;
-    const randomizedDomain = yourDomain.toLowerCase().split('').map(char => getRandomBoolean(0.5) ? char.toUpperCase() : char.toLowerCase()).join('');
+    const randomizedDomain = yourDomain.toLowerCase().split('').map(char => Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase()).join('');
     const randomizedPath = path;
     const config = {
         "log": {
@@ -188,15 +188,16 @@ function generateConfig() {
             ]
         }
     };
-    const formattedConfig = JSON.stringify(config, replacer, 2);
-    const configOutput = document.getElementById('configOutput');
-    configOutput.innerText = formattedConfig;
-    configOutput.parentElement.classList.add('config-output-container');
-    const downloadButton = document.getElementById('downloadButton');
-    downloadButton.removeAttribute('disabled');
+const formattedConfig = JSON.stringify(config, replacer, 2);
+const configOutput = document.getElementById('configOutput');
+configOutput.innerText = formattedConfig;
+configOutput.parentElement.classList.add('config-output-container');
+const downloadButton = document.getElementById('downloadButton');
+downloadButton.removeAttribute('disabled');
 
-    return config;
-        }
+return config;
+}
+
 function downloadConfig() {
     const configOutput = document.getElementById('configOutput').innerText;
     const blob = new Blob([configOutput], { type: 'application/json' });
@@ -205,15 +206,26 @@ function downloadConfig() {
     a.download = 'config.json';
     a.click();
     URL.revokeObjectURL(a.href);
-    }
-    const replacer = (key, value) => {
+}
+
+const replacer = (key, value) => {
     if (key === "servers" || key === "domain") {
         return value.map((item) => `"${item}"`).join(", ");
     }
     return value;
-    };
+};
+
 function getRandomBoolean(probability) {
     return Math.random() < probability;
 }
 
+function generateRandomString(length, characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789') {
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
+}
+
 export { generateConfig, downloadConfig };
+
