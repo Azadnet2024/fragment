@@ -1,3 +1,5 @@
+export { generateConfig, downloadConfig };
+
 function generateConfig() {
     
     const cleanIP = document.getElementById('cleanIP').value;
@@ -227,5 +229,3 @@ function generateRandomString(length, characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZab
     }
     return result;
 }
-
-export { generateConfig, downloadConfig };
