@@ -35,8 +35,8 @@
     }
 
     .output-container {
-        background: #f4f4f4;
-        color: #fff;
+        background-color: #f4f4f4;
+        color: #333;
         padding: 1.5rem;
         border-radius: 0.5rem;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -109,7 +109,7 @@
     }
 
     .config-output-container {
-        background: #f4f4f4;
+        background-color: #f4f4f4;
         color: #333;
         padding: 1.5rem;
         border-radius: 0.5rem;
