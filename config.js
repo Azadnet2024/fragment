@@ -188,12 +188,12 @@ function generateConfig() {
             ]
         }
     };
+console.log('Before setting innerText');
 const formattedConfig = JSON.stringify(config, replacer, 2);
 const configOutput = document.getElementById('configOutput');
+console.log('configOutput:', configOutput);
 configOutput.innerText = formattedConfig;
-configOutput.parentElement.classList.add('config-output-container');
-const downloadButton = document.getElementById('downloadButton');
-downloadButton.removeAttribute('disabled');
+console.log('After setting innerText');
 
 return config;
 }
