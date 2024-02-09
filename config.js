@@ -14,6 +14,7 @@ function generateConfig() {
     const selectedTransport = document.getElementById('transport').value;
     const portsList = [443, 8443, 2053, 2096, 2087, 2083, 80, 8080, 8880, 2052, 2082, 2086, 2095];
     const randomizedDomain = yourDomain.toLowerCase().split('').map(char => getRandomBoolean(0.5) ? char.toUpperCase() : char.toLowerCase()).join('');
+    const randomizedpath = path;
     const config = {
         "log": {
             "access": "",
@@ -83,7 +84,7 @@ function generateConfig() {
                     ]
                 },
                 "streamSettings": {
-                    "network": selectedTransport,
+                    "network": selectedTransport ? "tls" : "none",
                     "security": tls ? "tls" : "none",
                     "tlsSettings": {
                         "allowInsecure": allowInsecure ? true : false,
@@ -96,7 +97,7 @@ function generateConfig() {
                         "show": false
                     },
                     "wsSettings": {
-                        "path": Path,
+                        "path": randomizedpath,
                         "headers": {
                             "Host": wsHost
                         }
