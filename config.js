@@ -66,7 +66,7 @@ function generateConfig() {
         "outbounds": [
             {
                 "tag": "proxy",
-                "protocol": selectedProtocol ? "vless" : "vmess",
+                "protocol": selectedProtocol,
                 "settings": {
                     "vnext": [
                         {
@@ -86,7 +86,7 @@ function generateConfig() {
                     ]
                 },
                 "streamSettings": {
-                    "network": selectedTransport ? "ws" : "grpc",
+                    "network": selectedTransport,
                     "security": tls ? "tls" : "none",
                     "tlsSettings": {
                         "allowInsecure": allowInsecure ? true : false,
