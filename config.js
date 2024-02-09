@@ -226,6 +226,3 @@ function generateRandomString(length, characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZab
     }
     return result;
 }
-
-export { generateConfig, downloadConfig };
-
