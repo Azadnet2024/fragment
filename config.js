@@ -27,17 +27,17 @@ function generateConfig() {
                 "listen": "127.0.0.1",
                 "protocol": "socks",
                 "sniffing": {
-                    "enabled": true,
+                    "enabled": "true",
                     "destOverride": [
                         "http",
                         "tls"
                     ],
-                    "routeOnly": false
+                    "routeOnly": "false"
                 },
                 "settings": {
                     "auth": "noauth",
-                    "udp": true,
-                    "allowTransparent": false
+                    "udp": "true",
+                    "allowTransparent": "false"
                 }
             },
             {
@@ -46,17 +46,17 @@ function generateConfig() {
                 "listen": "127.0.0.1",
                 "protocol": "http",
                 "sniffing": {
-                    "enabled": true,
+                    "enabled": "true",
                     "destOverride": [
                         "http",
                         "tls"
                     ],
-                    "routeOnly": false
+                    "routeOnly": "false"
                 },
                 "settings": {
                     "auth": "noauth",
-                    "udp": true,
-                    "allowTransparent": false
+                    "udp": "true",
+                    "allowTransparent": "false"
                 }
             }
         ],
@@ -83,17 +83,17 @@ function generateConfig() {
                     ]
                 },
                 "streamSettings": {
-                    "network": selectedTransport,
+                    "network": selectedTransport ? "ws" : "grpc",
                     "security": tls ? "tls" : "none",
                     "tlsSettings": {
-                        "allowInsecure": allowInsecure ? true : false,
+                        "allowInsecure": allowInsecure ? "true" : "false",
                         "serverName": randomizedDomain,
                         "alpn": [
                             "h2",
                             "http/1.1"
                         ],
                         "fingerprint": "safari",
-                        "show": false
+                        "show": "false"
                     },
                     "wsSettings": {
                         "path": randomizedPath,
@@ -105,11 +105,11 @@ function generateConfig() {
                         "dialerProxy": "fragment",
                         "tcpKeepAliveIdle": 100,
                         "mark": 255,
-                        "tcpNoDelay": allowEarlyData ? true : false,
+                        "tcpNoDelay": allowEarlyData ? "true" : "false",
                     }
                 },
                 "mux": {
-                    "enabled": mux ? true : false,
+                    "enabled": mux ? "true" : "false",
                     "concurrency": mux ? 8 : -1 
                 }
             },
@@ -126,7 +126,7 @@ function generateConfig() {
                 },
                 "streamSettings": {
                     "sockopt": {
-                        "tcpNoDelay": allowEarlyData ? true : false,
+                        "tcpNoDelay": allowEarlyData ? "true" : "false",
                         "tcpKeepAliveIdle": 100
                     }
                 }
@@ -155,7 +155,7 @@ function generateConfig() {
                         "api"
                     ],
                     "outboundTag": "api",
-                    "enabled": true
+                    "enabled": "true"
                 },
                 {
                     "id": "5465425548310166497",
@@ -165,7 +165,7 @@ function generateConfig() {
                         "domain:ir",
                         "geosite:cn"
                     ],
-                    "enabled": block ? true : false,
+                    "enabled": block ? "true" : "false",
                 },
                 {
                     "id": "5425034033205580637",
@@ -176,14 +176,14 @@ function generateConfig() {
                         "geoip:cn",
                         "geoip:ir"
                     ],
-                    "enabled": block ? true : false,
+                    "enabled": block ? "true" : "false",
                 },
                 {
                     "id": "5627785659655799759",
                     "type": "field",
                     "port": "0-65535",
                     "outboundTag": "proxy",
-                    "enabled": true
+                    "enabled": "true"
                 }
             ]
         }
