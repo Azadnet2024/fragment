@@ -25,22 +25,22 @@
         <div class="container">
             <form id="configForm">
 
-                <label id="cleanIP" data-en="Clean IP / Domain (e.g. npmjs.com):"
+                <label for="cleanIP" data-en="Clean IP / Domain (e.g. npmjs.com):"
                                     data-fa="آی پی تمیز / دامنه (برای مثال npmjs.com):"></label>
                 <input type="text" id="cleanIP" name="cleanIP" style="margin-bottom: 10px;"
                     placeholder="محل قرارگیری آی پی تمیز یا دامنه"><br>
 
-               <label id="yourDomain" data-en="Your CDN Domain" 
+               <label for="yourDomain" data-en="Your CDN Domain" 
                                         data-fa="دامنه کانفیگ"></label>
                 <input type="text" id="yourDomain" name="yourDomain" 
                     placeholder="محل قرارگیری دامنه کانفیگ یا وپن" style="margin-bottom: 10px;"><br>
 
-                <label id="wsHost" data-en="ws host / gRPC servicename" 
+                <label for="wsHost" data-en="ws host / gRPC servicename" 
                                     data-fa="وب سوکت هاست / سرویس جی ار پی سی"></label>
                 <input type="text" id="wsHost" name="wsHost" 
                     placeholder="محل قرارگیری دامنه کانفیگ یا وپن" style="margin-bottom: 1px;"><br>
             
-                <label id="port" data-en="Port" 
+                <label for="port" data-en="Port" 
                                     data-fa="پورت کانفیگ"></label>
                 <select id="port" name="port" style="margin-bottom: 1px;">
                         <option value="8443">8443</option>
@@ -57,42 +57,42 @@
                         <option value="2095">2095</option>
                 </select><br>
 
-                <label id="userUUID" data-en="UUID" 
+                <label for="userUUID" data-en="UUID" 
                                         data-fa="یوآیدی کانفیگ"></label>
                 <input type="text" id="userUUID" name="userUUID" placeholder="محل قرارگیری یوآیدی کانفیگ" style="margin-bottom: 10px;" required><br>
             
-                <label id="protocol" data-en="Protocol" 
+                <label for="protocol" data-en="Protocol" 
                                         data-fa="پروتوکل کانفیگ"></label>
                 <select id="protocol" name="protocol" style="margin-bottom: 10px;">
                     <option value="vless">VLESS</option>
                     <option value="vmess">VMESS</option>
                 </select><br>
             
-                <label id="transport" data-en="Transport" 
+                <label for="transport" data-en="Transport" 
                                         data-fa="ترنسپورت"></label>
                 <select id="transport" name="transport" style="margin-bottom: 10px;">
                     <option value="ws">WS</option>
                     <option value="grpc">gRPC</option>
                 </select><br>
             
-                <label id="path" data-en="Path" 
+                <label for="path" data-en="Path" 
                                     data-fa="مسیر پیکربندی"></label>
                 <input type="text" id="path" name="path" 
                     placeholder="e.g., /?ed=2048" style="margin-bottom: 10px;"><br>
             
-                <label id="tls" title="در صورت انتخاب, به پورت دقت کنید" data-en="Enable TLS" 
+                <label for="tls" title="در صورت انتخاب, به پورت دقت کنید" data-en="Enable TLS" 
                                     data-fa="تی ال اس"></label></label>
                 <input type="checkbox" id="tls" name="tls" style="margin-bottom: 10px;"><br>
             
-                <label id="mux" title="کاهش زمان تاخیر در ارسال داده ها" data-en="MUX" 
+                <label for="mux" title="کاهش زمان تاخیر در ارسال داده ها" data-en="MUX" 
                                     data-fa="MUX"></label></label>
                 <input type="checkbox" id="mux" name="mux" style="margin-bottom: 10px;"><br>
             
-                <label id="allowInsecure" title="در صورت استفاده از ای پی در اس ان ای روشن شود" data-en="Allow insecure" 
+                <label for="allowInsecure" title="در صورت استفاده از ای پی در اس ان ای روشن شود" data-en="Allow insecure" 
                                     data-fa="Allow insecure"></label></label>
                 <input type="checkbox" id="allowInsecure" name="allowInsecure" style="margin-bottom: 10px;"><br>
             
-                <label id="allowEarlyData" title="API بهبود بارگزاری دیتا در پروتوکل مبتنی بر TCP non delay" data-en="Allow Early Data (TCP non-delay)" 
+                <label for="allowEarlyData" title="API بهبود بارگزاری دیتا در پروتوکل مبتنی بر TCP non delay" data-en="Allow Early Data (TCP non-delay)" 
                                     data-fa="TCP بدون تاخیر"></label>
                 <input type="checkbox" id="allowEarlyData" name="allowEarlyData" style="margin-bottom: 10px;"><br>
             
