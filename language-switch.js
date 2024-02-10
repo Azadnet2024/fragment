@@ -1,12 +1,15 @@
-function switchLanguage(language) {
-    document.documentElement.lang = language;
+function setLanguage(lang) {
+    document.documentElement.lang = lang;
 
+    updatePageContent(lang);
 }
 
-document.getElementById('englishBtn').addEventListener('click', function () {
-    switchLanguage('en');
-});
-
-document.getElementById('farsiBtn').addEventListener('click', function () {
-    switchLanguage('fa');
-});
+function updatePageContent(lang) {
+    if (lang === 'fa') {
+        document.getElementById('englishContent').style.display = 'none';
+        document.getElementById('farsiContent').style.display = 'block';
+    } else {
+        document.getElementById('englishContent').style.display = 'block';
+        document.getElementById('farsiContent').style.display = 'none';
+    }
+}
