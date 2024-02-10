@@ -30,7 +30,7 @@ function generateConfig() {
                 "protocol": "socks",
                 "settings": {
                     "auth": "noauth",
-                    "udp": true,
+                    "udp": "true",
                     "userLevel": 8
                 },
                 "sniffing": {
@@ -38,7 +38,7 @@ function generateConfig() {
                         "http",
                         "tls"
                     ],
-                    "enabled": true
+                    "enabled": "true"
                 },
                 "tag": "socks"
             },
@@ -83,7 +83,7 @@ function generateConfig() {
                 },
                 "streamSettings": {
                     "grpcSettings": {
-                        "multiMode": false,
+                        "multiMode": "false",
                         "serviceName": wsHost
                     },
                     "sockopt": {
@@ -101,7 +101,7 @@ function generateConfig() {
                         "publicKey": "",
                         "serverName": randomizedDomain,
                         "shortId": "",
-                        "show": false,
+                        "show": "false",
                         "spiderX": ""
                     }
                 },
