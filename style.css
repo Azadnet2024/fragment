@@ -1,32 +1,4 @@
-.language-switch-container {
-    display: flex;
-    justify-content: center;
-    margin: 1rem 0;
-}
-
-.language-switch-container button {
-    background-color: #008080;
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    margin: 0 0.5rem;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.language-switch-container button:hover {
-    background-color: #005757;
-}
-
-body[lang="fa"] {
-    font-family: 'IranSans', sans-serif;
-}
-
-h1[lang="fa"], h2[lang="fa"], label[lang="fa"] {
-    font-family: 'IranSans', sans-serif;
-}
-
+/* General styling */
 body {
     font-family: 'Poppins', 'Arial', sans-serif;
     background-color: #f4f4f4;
@@ -51,6 +23,7 @@ main {
     width: 100%;
 }
 
+/* Form styling */
 form,
 .output-container,
 .config-output-container {
@@ -65,12 +38,10 @@ form,
     max-height: 40rem;
     font-size: 1rem;
     overflow-y: auto;
-}
-
-form {
     text-align: left;
 }
 
+/* Button styling */
 button,
 .download-button {
     background-color: #008080;
@@ -95,6 +66,7 @@ button:hover {
     background-color: #eee;
 }
 
+/* Typography styling */
 h1, h2, h3 {
     font-family: 'Poppins', sans-serif;
     text-align: center;
@@ -106,6 +78,7 @@ pre {
     word-wrap: break-word;
 }
 
+/* Footer styling */
 footer {
     font-family: 'Poppins', sans-serif;
     text-align: center;
@@ -113,10 +86,38 @@ footer {
     color: #555;
 }
 
+/* Responsive layout */
 @media only screen and (min-width: 600px) {
     form,
     .output-container,
     .config-output-container {
         width: 30rem;
     }
+}
+
+/* Language switch container */
+.language-switch-container {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.language-switch-container button {
+    background-color: #008080;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.language-switch-container button:hover {
+    background-color: #005757;
+}
+
+/* Persian font for specific elements */
+body[lang="fa"], h1[lang="fa"], h2[lang="fa"], label[lang="fa"] {
+    font-family: 'IranSans', sans-serif;
 }
