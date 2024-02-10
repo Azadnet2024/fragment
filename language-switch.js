@@ -1,6 +1,5 @@
 function setLanguage(lang) {
     document.documentElement.lang = lang;
-
     updatePageContent(lang);
 }
 
@@ -10,11 +9,23 @@ function updatePageContent(lang) {
 
     if (engData && faData) {
         if (lang === 'fa') {
-            engData.style.display = 'none';
-            faData.style.display = 'block';
+            toggleContentVisibility(engData, false);
+            toggleContentVisibility(faData, true);
         } else {
-            engData.style.display = 'block';
-            faData.style.display = 'none';
+            toggleContentVisibility(engData, true);
+            toggleContentVisibility(faData, false);
         }
+    }
+}
+
+function toggleContentVisibility(element, isVisible) {
+    // You can use CSS classes for better separation of styles and behavior
+    // Add/Remove the appropriate class based on the visibility status
+    if (isVisible) {
+        element.classList.add('visible');
+        element.classList.remove('hidden');
+    } else {
+        element.classList.add('hidden');
+        element.classList.remove('visible');
     }
 }
