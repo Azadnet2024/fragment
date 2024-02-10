@@ -13,10 +13,9 @@
 </head>
 
 <body>
-    <h1 data-en="OPIran Subscription Fragment Generator" 
-        data-fa="امبدل فرگمنت اپیران"></h1>
-    <h2 data-en="After generating the code using the form, copy the config and place it in Cloudflare Worker, or you can use Cloudflare Deploy. Now your worker domain is your subscription link." 
-        data-fa="پس از ایجاد کد با استفاده از فرم، کانفیگ را کپی کرده و در کلودفلر ورکر قرار دهید یا می توانید از دپلوی در کلودفلر استفاده کنید. اکنون دامنه ورکر شما لینک اشتراک شماست"></h2>
+    <h1><span data-en="OPIran Subscription Fragment Generator" data-fa="مبدل فرگمنت اپیران"></span></h1>
+    <h2><span data-en="After generating the code using the form, copy the config and place it in Cloudflare Worker, or you can use Cloudflare Deploy. Now your worker domain is your subscription link." data-fa="پس از ایجاد کد با استفاده از فرم، کانفیگ را کپی کرده و در کلودفلر ورکر قرار دهید یا می توانید از دپلوی در کلودفلر استفاده کنید. اکنون دامنه ورکر شما لینک اشتراک شماست"></span></h2>
+
     <div class="language-switch-container">
         <button onclick="setLanguage('en')">English</button>
         <button onclick="setLanguage('fa')">فارسی</button>
@@ -80,22 +79,18 @@
                 <input type="text" id="path" name="path" 
                     placeholder="e.g., /?ed=2048" style="margin-bottom: 10px;"><br>
             
-                <label for="tls" title="در صورت انتخاب, به پورت دقت کنید" data-en="Enable TLS" 
-                                    data-fa="تی ال اس"></label></label>
-                <input type="checkbox" id="tls" name="tls" style="margin-bottom: 10px;"><br>
-            
-                <label for="mux" title="کاهش زمان تاخیر در ارسال داده ها" data-en="MUX" 
-                                    data-fa="MUX"></label></label>
-                <input type="checkbox" id="mux" name="mux" style="margin-bottom: 10px;"><br>
-            
-                <label for="allowInsecure" title="در صورت استفاده از ای پی در اس ان ای روشن شود" data-en="Allow insecure" 
-                                    data-fa="Allow insecure"></label></label>
-                <input type="checkbox" id="allowInsecure" name="allowInsecure" style="margin-bottom: 10px;"><br>
-            
-                <label for="allowEarlyData" title="API بهبود بارگزاری دیتا در پروتوکل مبتنی بر TCP non delay" data-en="Allow Early Data (TCP non-delay)" 
-                                    data-fa="TCP بدون تاخیر"></label>
-                <input type="checkbox" id="allowEarlyData" name="allowEarlyData" style="margin-bottom: 10px;"><br>
-            
+<label for="tls" title="در صورت انتخاب, به پورت دقت کنید">Enable TLS:</label>
+<input type="checkbox" id="tls" name="tls" style="margin-bottom: 10px;"><br>
+
+<label for="mux" title="کاهش زمان تاخیر در ارسال داده ها">Enable Mux:</label>
+<input type="checkbox" id="mux" name="mux" style="margin-bottom: 10px;"><br>
+
+<label for="allowInsecure" title="در صورت استفاده از ای پی در اس ان ای روشن شود">Allow insecure:</label>
+<input type="checkbox" id="allowInsecure" name="allowInsecure" style="margin-bottom: 10px;"><br>
+
+<label for="allowEarlyData" title="API بهبود بارگزاری دیتا در پروتوکل مبتنی بر TCP non delay">Allow Early Data (TCP non-delay):</label>
+<input type="checkbox" id="allowEarlyData" name="allowEarlyData" style="margin-bottom: 10px;"><br>
+
                             <button type="button" onclick="generateConfig()" data-en="Generate Configuration"
                                 data-fa="ایجاد کانفیگ"></button>
 
@@ -111,10 +106,13 @@
     <a href="https://workers.cloudflare.com/playground" target="_blank">
         <img src="https://deploy.workers.cloudflare.com/button?paid=true" alt="Deploy to Cloudflare Workers" />
     </a>
-    <footer data-en="© Prepared by" data-fa="© تهیه شده توسط"><a
-            href="https://github.com/opiran-club/worker_fragment_creator">FaRzAd</a></footer>
+    
+<footer data-en="@ Prepared by" data-fa="@ تهیه شده توسط">
+    <a href="https://github.com/opiran-club/worker_fragment_creator">FaRzAd</a>
+</footer>
+
     <script defer src="language-switch.js"></script>
     <script defer src="config.js" type="text/javascript"></script>
+    
 </body>
-
 </html>
