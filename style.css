@@ -20,11 +20,11 @@
 }
 
 body[lang="fa"] {
-    direction: rtl;
+    font-family: 'IranSans', sans-serif;
 }
 
-body[lang="fa"] h1, body[lang="fa"] h2, body[lang="fa"] label {
-    font-family: 'bnazanin', sans-serif;
+h1[lang="fa"], h2[lang="fa"], label[lang="fa"] {
+    font-family: 'IranSans', sans-serif;
 }
 
 body {
