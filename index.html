@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
@@ -10,9 +10,8 @@
     <title>Fragment Generator</title>
 </head>
 <body>
-    <h1>OPIran Subscription Fragment Generator</h1>
-    <h2>پس از ایجاد کد با استفاده از فرم، کانفیگ را کپی کرده و در کلودفلر ورکر قرار دهید یا می توانید از دپلوی در کلودفلر استفاده کنید
-    اکنون دامنه ورکر شما لینک اشتراک شماست</h2>
+    <h1 data-en="OPIran Subscription Fragment Generator" data-fa="امبدل فرگمنت اپیران"></h1>
+    <h2 data-en="After generating the code using the form, copy the config and place it in Cloudflare Worker, or you can use Cloudflare Deploy. Now your worker domain is your subscription link." data-fa="پس از ایجاد کد با استفاده از فرم، کانفیگ را کپی کرده و در کلودفلر ورکر قرار دهید یا می توانید از دپلوی در کلودفلر استفاده کنید. اکنون دامنه ورکر شما لینک اشتراک شماست"></h2>
     <div class="language-switch-container">
         <button id="englishBtn">English</button>
         <button id="farsiBtn">فارسی</button>
@@ -21,16 +20,16 @@
     <div class="container">
     <form id="configForm">
 
-    <label for="cleanIP">Clean IP / Domain (e.g. npmjs.com):</label>
+    <label for="cleanIP" data-en="Clean IP / Domain (e.g. npmjs.com):" data-fa="آی پی تمیز / دامنه (برای مثال npmjs.com):"></label>
     <input type="text" id="cleanIP" name="cleanIP" style="margin-bottom: 10px;" placeholder="محل قرارگیری آی پی تمیز یا دامنه"><br>
 
-    <label for="yourDomain">Your Domain:</label>
+    <label for="yourDomain" data-en="Your CDN Domain" data-fa="دامنه کانفیگ"></label>
     <input type="text" id="yourDomain" name="yourDomain" style="margin-bottom: 10px;" placeholder="محل قرارگیری دامنه کانفیگ یا وپن"><br>
 
-    <label for="wsHost">WS / gRPC servicename </label>
+    <label for="wsHost" data-en="ws host / gRPC servicename" data-fa="وب سوکت هاست / سرویس جی ار پی سی"></label>
     <input type="text" id="wsHost" name="wsHost" style="margin-bottom: 1px;" placeholder="محل قرارگیری دامنه کانفیگ یا وپن"><br>
 
-    <label for="port">Port:</label>
+    <label for="port" data-en="Port" data-fa="پورت کانفیگ"></label>
     <select id="port" name="port" style="margin-bottom: 1px;">
       <option value="443">443</option>
             <option value="8443">8443</option>
@@ -47,23 +46,23 @@
             <option value="2095">2095</option>
         </select><br>
 
-    <label for="userUUID">User UUID:</label>
+    <label for="userUUID" data-en="UUID" data-fa="یوآیدی کانفیگ"></label>
     <input type="text" id="userUUID" name="userUUID" style="margin-bottom: 10px;" placeholder="محل قرارگیری یوآیدی کانفیگ" required><br>
 
-    <label for="protocol">Protocol:</label>
+    <label for="protocol" data-en="Protocle" data-fa="پروتوکل کانفیگ"></label>
     <select id="protocol" name="protocol" style="margin-bottom: 10px;">
             <option value="vless">VLESS</option>
             <option value="vmess">VMESS</option>
         </select><br>
 
-    <label for="transport">Transport:</label>
+    <label for="transport" data-en="Transport" data-fa="ترنسپورت"></label>
     <select id="transport" name="transport" style="margin-bottom: 10px;">
        <option value="ws">WS</option>
             <option value="grpc">gRPC</option>
         </select><br>
             
-    <label for="path">Path (e.g. /?ed=2048):</label>
-    <input type="text" id="path" name="path" style="margin-bottom: 10px;" placeholder="Enter Path"><br>
+    <label for="path" data-en="Path" data-fa="مسیر پیکربندی"></label>
+    <input type="text" id="path" name="path" style="margin-bottom: 10px;" placeholder="e.g /?ed=2048"><br>
 
     <label for="tls" title="در صورت انتخاب , به پورت دقت کنید">Enable TLS:</label>
     <input type="checkbox" id="tls" name="tls" style="margin-bottom: 10px;"><br>
@@ -77,9 +76,9 @@
     <label for="allowEarlyData" title="API بهبود بارگزاری دیتا در پروتوکل مبتنی بر TCP non delay">Allow Early Data (TCP non delay):</label>
     <input type="checkbox" id="allowEarlyData" name="allowEarlyData" style="margin-bottom: 10px;"><br>
 
-    <button type="button" onclick="generateConfig()">Generate Configuration</button>
+    <button type="button" onclick="generateConfig()" data-en="Generate Configuration" data-fa="ایجاد کانفیگ"></button>
 
-    <button class="download-button" type="button" onclick="downloadConfig()" disabled>Download Configuration</button>    
+    <button class="download-button" type="button" onclick="downloadConfig()" disabled data-en="Download Configuration" data-fa="دانلود کانفیگ"></button>    
 </form>
     <div class="output-container">
         <pre id="configOutput"></pre>
@@ -89,7 +88,7 @@
     <a href="https://workers.cloudflare.com/playground" target="_blank">
       <img src="https://deploy.workers.cloudflare.com/button?paid=true" alt="Deploy to Cloudflare Workers"/>
     </a>
-    <footer>© Prepared by <a href="https://github.com/opiran-club/worker_fragment_creator">FaRzAd</a></footer>
+    <footer data-en="© Prepared by" data-fa="© تهیه شده توسط"><a href="https://github.com/opiran-club/worker_fragment_creator">FaRzAd</a></footer>
 <script src="config.js" type="text/javascript"></script>
 
 </body>
