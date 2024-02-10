@@ -1,130 +1,94 @@
-    body {
-        font-family: 'Poppins', 'Arial', sans-serif;
-        background-color: #f4f4f4;
-        color: #333;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-    }
+body {
+    font-family: 'Poppins', 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
 
-    .container {
-        display: flex;
-    }
+.container {
+    display: flex;
+}
 
-    main {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        width: 100%;
-    }
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
 
-    form {
-        background-color: #f4f4f4;
-        position: static;
-        padding: 1.5rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        width: 30rem;
-        text-align: left;
-        margin-left: 1.5rem;
-        flex-shrink: 0;
-    }
+form,
+.output-container,
+.config-output-container {
+    background-color: #f4f4f4;
+    color: #000;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Full width on mobile */
+    margin: 1rem 0; /* Add space between elements */
+    position: relative;
+    max-height: 40rem;
+    font-size: 1rem;
+    overflow-y: auto;
+}
 
-    .output-container {
-        background-color: #f4f4f4;
-        color: #000;
-        padding: 1.5rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        width: 30rem;
-        margin-left: 1.5rem;
-        position: relative;
-        max-height: 40rem;
-        font-size: 1rem;
-        overflow-y: auto;
-    }
+form {
+    text-align: left;
+}
 
-    h1 {
-        font-family: 'Poppins', sans-serif;
-        color: #008080;
-        text-align: center;
-        margin-bottom: 1.5rem;
-    }
+button,
+.download-button {
+    background-color: #008080;
+    color: #fff;
+    border: none;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 1rem 0; /* Add space between buttons */
+}
 
-    h2 {
-        font-family: 'Poppins', sans-serif;
-        font-size: 1rem;
-        color: #555;
-        text-align: center;
-        margin-bottom: 2rem;
-    }
+button:hover {
+    background-color: #005757;
+}
 
-    h3 {
-        font-family: 'Poppins', sans-serif;
-        font-size: 0.75rem;
-        color: #555;
-        text-align: left;
-        margin-bottom: 1rem;
-    }
+.download-button {
+    background-color: #FF0000;
+}
 
-    pre {
-        white-space: pre-wrap;
-        word-wrap: break-word;
-    }
+.download-button:hover {
+    background-color: #eee;
+}
 
-    button {
-        background-color: #008080;
-        color: #fff;
-        border: none;
-        padding: 1rem;
-        border-radius: 0.25rem;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin-left: 1.5rem;
-        margin-top: 1rem;
-    }
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin-bottom: 1rem;
+}
 
-    button:hover {
-        background-color: #005757;
-    }
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
 
-    .download-button {
-        background-color: #FF0000;
-        color: #fff;
-        border: none;
-        padding: 1rem;
-        border-radius: 0.25rem;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin-left: 1.5rem;
-        margin-top: 1rem;
-    }
+footer {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #555;
+}
 
-    .download-button:hover {
-        background-color: #eee;
-    }
-
+/* Media Queries */
+@media only screen and (min-width: 600px) {
+    form,
+    .output-container,
     .config-output-container {
-        background-color: #f4f4f4;
-        color: #333;
-        padding: 1.5rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        width: 35rem;
-        margin-left: 1.5rem;
-        position: relative;
-        max-height: 40rem;
-        font-size: 1rem;
-        overflow-y: auto;
+        width: 30rem; /* Adjust width for larger screens */
     }
-
-    footer {
-        font-family: 'Poppins', sans-serif;
-        text-align: center;
-        margin-top: 1.5rem;
-        color: #555;
-    }
+}
