@@ -68,7 +68,7 @@ function generateConfig() {
                     "vnext": [
                         {
                             "address": cleanIP,
-                            "port": port,
+                            "port": parseInt(port),
                             "users": [
                                 {
                                     "encryption": "none",
