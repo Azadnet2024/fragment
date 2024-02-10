@@ -202,6 +202,7 @@ function generateRandomString(length, characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZab
 
 function switchLanguage(language) {
     document.documentElement.lang = language;
+
 }
 
 document.getElementById('englishBtn').addEventListener('click', function () {
