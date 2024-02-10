@@ -1,5 +1,4 @@
 function generateConfig() {
-    
     const cleanIP = document.getElementById('cleanIP').value;
     const yourDomain = document.getElementById('yourDomain').value;
     const wsHost = document.getElementById('wsHost').value;
@@ -8,24 +7,6 @@ function generateConfig() {
     const path = document.getElementById('path').value;
     const tls = document.getElementById('tls').checked;
     const mux = document.getElementById('mux').checked;
-    const block = document.getElementById('block').checked;
-    const allowInsecure = document.getElementById('allowInsecure').checked;
-    const allowEarlyData = document.getElementById('allowEarlyData').checked;
-    const selectedProtocol = document.getElementById('protocol').value;
-    const selectedTransport = document.getElementById('transport').value;
-    const randomizedDomain = yourDomain.toLowerCase().split('').map(char => Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase()).join('');
-    const randomizedPath = path;
-    
-function generateConfig() {
-    const cleanIP = document.getElementById('cleanIP').value;
-    const yourDomain = document.getElementById('yourDomain').value;
-    const wsHost = document.getElementById('wsHost').value;
-    const port = document.getElementById('port').value;
-    const userUUID = document.getElementById('userUUID').value;
-    const path = document.getElementById('path').value;
-    const tls = document.getElementById('tls').checked;
-    const mux = document.getElementById('mux').checked;
-    const block = document.getElementById('block').checked;
     const allowInsecure = document.getElementById('allowInsecure').checked;
     const allowEarlyData = document.getElementById('allowEarlyData').checked;
     const selectedProtocol = document.getElementById('protocol').value;
@@ -103,7 +84,7 @@ function generateConfig() {
                 "streamSettings": {
                     "grpcSettings": {
                         "multiMode": false,
-                        "serviceName": ""
+                        "serviceName": wsHost
                     },
                     "sockopt": {
                         "dialerProxy": "frag",
