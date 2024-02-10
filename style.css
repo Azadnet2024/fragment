@@ -119,6 +119,6 @@ footer {
 
 /* Persian font for specific elements */
 body[lang="fa"], h1[lang="fa"], h2[lang="fa"], label[lang="fa"] {
-    font-family: 'IranSans', sans-serif;
+    font-family: 'shabnam', font-face;
 }
 
