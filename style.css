@@ -1,3 +1,28 @@
+.language-switch-container {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.language-switch-container button {
+    background-color: #008080;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.language-switch-container button:hover {
+    background-color: #005757;
+}
+
+body[lang="fa"] {
+    direction: rtl;
+}
+
 body {
     font-family: 'Poppins', 'Arial', sans-serif;
     background-color: #f4f4f4;
@@ -30,8 +55,8 @@ form,
     padding: 1.5rem;
     border-radius: 0.5rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Full width on mobile */
-    margin: 1rem 0; /* Add space between elements */
+    width: 100%;
+    margin: 1rem 0;
     position: relative;
     max-height: 40rem;
     font-size: 1rem;
@@ -51,7 +76,7 @@ button,
     border-radius: 0.25rem;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin: 1rem 0; /* Add space between buttons */
+    margin: 1rem 0;
 }
 
 button:hover {
@@ -84,11 +109,10 @@ footer {
     color: #555;
 }
 
-/* Media Queries */
 @media only screen and (min-width: 600px) {
     form,
     .output-container,
     .config-output-container {
-        width: 30rem; /* Adjust width for larger screens */
+        width: 30rem;
     }
 }
