@@ -192,10 +192,6 @@ const replacer = (key, value) => {
     return value;
 };
 
-function getRandomBoolean(probability) {
-    return Math.random() < probability;
-}
-
 function generateRandomString(length, characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789') {
     let result = '';
     for (let i = 0; i < length; i++) {
