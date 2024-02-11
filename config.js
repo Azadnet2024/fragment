@@ -17,155 +17,157 @@ function generateConfig() {
     const randomizedPath = path;
     
     const config = {
-        "dns": {
-            "hosts": {
-                "domain:googleapis.cn": "googleapis.com"
-            },
-            "servers": ["8.8.8.8"]
+{
+    "dns": {
+        "hosts": {
+            "domain:googleapis.cn": "googleapis.com"
         },
-        "inbounds": [
-            {
-                "listen": "127.0.0.1",
-                "port": 10808,
-                "protocol": "socks",
-                "settings": {
-                    "auth": "noauth",
-                    "udp": true,
-                    "userLevel": 8
-                },
-                "sniffing": {
-                    "destOverride": ["http","tls"],
-                    "enabled": true
-                },
-                "tag": "socks"
+        "servers": ["8.8.8.8"]
+    },
+    "inbounds": [
+        {
+            "listen": "127.0.0.1",
+            "port": 10808,
+            "protocol": "socks",
+            "settings": {
+                "auth": "noauth",
+                "udp": true,
+                "userLevel": 8
             },
-            {
-                "listen": "127.0.0.1",
-                "port": 10809,
-                "protocol": "http",
-                "settings": {
-                    "userLevel": 8
-                },
-                "tag": "http"
-            }
-        ],
-        "log": {
-            "loglevel": "warning"
+            "sniffing": {
+                "destOverride": ["http", "tls"],
+                "enabled": true
+            },
+            "tag": "socks"
         },
-        "outbounds": [
-            {
-                "mux": {
-                    "concurrency": mux ? 8 : -1,
-                    "enabled": mux ? true : false,
-                    "xudpConcurrency": 8,
-                    "xudpProxyUDP443": "reject"
-                },
-                "protocol": selectedProtocol,
-                "settings": {
-                    "vnext": [
-                        {
-                            "address": cleanIP,
-                            "port": parseInt(port),
-                            "users": [
-                                {
-                                    "encryption": "none",
-                                    "flow": "",
-                                    "id": userUUID,
-                                    "level": 8,
-                                    "security": "auto"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                "streamSettings": {
-                    "grpcSettings": {
-                        "multiMode": false,
-                        "serviceName": wsHost
-                    },
-                    "network": selectedTransport,
-                    "security": tls ? "tls" : "none",
-                    "tlsSettings": {
-                        "allowInsecure": allowInsecure ? true : false,
-                        "alpn": ["h2", "http/1.1"],
-                        "fingerprint": "safari",
-                        "publicKey": "",
-                        "serverName": randomizedDomain,
-                        "shortId": "",
-                        "show": false,
-                        "spiderX": ""
-                    }
-                },
-                  "proxySettings": {
-                  "tag": "fragment",
-                  "transportLayer": true
-                },
-                "tag": "proxy"
+        {
+            "listen": "127.0.0.1",
+            "port": 10809,
+            "protocol": "http",
+            "settings": {
+                "userLevel": 8
             },
-            {
-              "protocol": "freedom",
-              "settings": {},
-              "tag": "direct"
+            "tag": "http"
+        }
+    ],
+    "log": {
+        "loglevel": "warning"
+    },
+    "outbounds": [
+        {
+            "mux": {
+                "concurrency": mux ? 8 : -1,
+                "enabled": mux ? true : false,
+                "xudpConcurrency": 8,
+                "xudpProxyUDP443": "reject"
             },
-            {
-              "protocol": "freedom",
-              "tag": "fragment",
-              "domainStrategy": "UseIP",
-              "sniffing": {
-                "enabled": true,
-                "destOverride": ["http", "tls"]
-              },
-              "settings": {
-                    "fragment": {
-                        "packets": tls ? "tlshello" : "1-1",
-                        "length": tls ? "10-20" : "1-3",
-                        "interval": tls ? "10-20" : "5"
+            "protocol": selectedProtocol,
+            "settings": {
+                "vnext": [
+                    {
+                        "address": cleanIP,
+                        "port": parseInt(port),
+                        "users": [
+                            {
+                                "encryption": "none",
+                                "flow": "",
+                                "id": userUUID,
+                                "level": 8,
+                                "security": "auto"
+                            }
+                        ]
                     }
+                ]
+            },
+            "streamSettings": {
+                "grpcSettings": {
+                    "multiMode": false,
+                    "serviceName": wsHost
                 },
-                "streamSettings": {
-                    "sockopt": {
-                        "tcpNoDelay": allowEarlyData ? true : false,
-                        "domainStrategy": "UseIP"
-                    }
+                "network": selectedTransport,
+                "security": tls ? "tls" : "none",
+                "tlsSettings": {
+                    "allowInsecure": allowInsecure ? true : false,
+                    "alpn": ["h2", "http/1.1"],
+                    "fingerprint": "safari",
+                    "publicKey": "",
+                    "serverName": randomizedDomain,
+                    "shortId": "",
+                    "show": false,
+                    "spiderX": ""
                 }
             },
-            {
-                "protocol": "blackhole",
-                "settings": {
-                    "response": {
-                        "type": "http"
-                    }
-                },
-                "tag": "block"
+            "proxySettings": {
+                "tag": "fragment",
+                "transportLayer": true
+            },
+            "tag": "proxy"
+        },
+        {
+            "protocol": "freedom",
+            "settings": {},
+            "tag": "direct"
+        },
+        {
+            "protocol": "freedom",
+            "tag": "fragment",
+            "domainStrategy": "UseIP",
+            "sniffing": {
+                "enabled": true,
+                "destOverride": ["http", "tls"]
+            },
+            "settings": {
+                "fragment": {
+                    "packets": tls ? "tlshello" : "1-1",
+                    "length": tls ? "10-20" : "1-3",
+                    "interval": tls ? "10-20" : "5"
+                }
+            },
+            "streamSettings": {
+                "sockopt": {
+                    "tcpNoDelay": allowEarlyData ? true : false,
+                    "domainStrategy": "UseIP"
+                }
             }
-        ],
-          "policy": {
-          "levels": {
+        },
+        {
+            "protocol": "blackhole",
+            "settings": {
+                "response": {
+                    "type": "http"
+                }
+            },
+            "tag": "block"
+        }
+    ],
+    "policy": {
+        "levels": {
             "8": {
-              "connIdle": 300,
-              "downlinkOnly": 1,
-              "handshake": 4,
-              "uplinkOnly": 1
+                "connIdle": 300,
+                "downlinkOnly": 1,
+                "handshake": 4,
+                "uplinkOnly": 1
             }
-          },
-          "system": {
+        },
+        "system": {
             "statsOutboundUplink": true,
             "statsOutboundDownlink": true
-          }
-        },
-        "routing": {
-          "domainStrategy": "IPIfNonMatch",
-          "rules": [
+        }
+    },
+    "routing": {
+        "domainStrategy": "IPIfNonMatch",
+        "rules": [
             {
-              "ip": ["1.1.1.1"],
-              "outboundTag": "proxy",
-              "port": "53",
-              "type": "field"
+                "ip": ["1.1.1.1"],
+                "outboundTag": "proxy",
+                "port": "53",
+                "type": "field"
             }
-          ]
-        },
-        "stats": {}
-      };
+        ]
+    },
+    "stats": {}
+}
+            };
 
 const configString = JSON.stringify(config).replace(/\s/g, '');
 
