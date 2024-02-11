@@ -167,22 +167,17 @@ configOutput.innerText = configString;
 }
 
 function downloadConfig() {
-    // Check if configOutput has the expected content
-    const configOutput = document.getElementById('configOutput');
-    console.log('Config Output Content:', configOutput.innerText);
+  const configOutput = document.getElementById('configOutput');
+  const configString = configOutput.innerText;
 
-    // Continue with the download logic
-    const blob = new Blob([configOutput.innerText], { type: 'application/json' });
-    const url = window.URL.createObjectURL(blob);
-
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'config.json';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(url);
+  const a = document.createElement('a');
+  a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(configString);
+  a.download = 'config.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
+
 
 const replacer = (key, value) => {
     if (key === "servers" || key === "domain") {
