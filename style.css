@@ -76,20 +76,6 @@ h1, h2, h3 {
     margin-bottom: 1rem;
 }
 
-h1 {
-    font-size: 2rem;
-    color: #008080;
-
-h2 {
-    font-size: 1.5rem;
-    color: #FF0000;
-}
-
-.subtitle {
-    font-size: 1.2rem;
-    color: #555;
-}
-
 pre {
     white-space: pre-wrap;
     word-wrap: break-word;
