@@ -162,14 +162,21 @@ function generateConfig() {
     };
     
     
+function generateConfig() {
+    // ... (your existing code)
+
+    // Convert the config object to a JSON string
     const configString = JSON.stringify(config, null, 2);
 
+    // Replace escaped backslashes
+    const cleanedConfigString = configString.replace(/\\/g, '');
+
     // Log the result
-    console.log('Config String:', configString);
+    console.log('Config String:', cleanedConfigString);
 
     // Set the config string to the output element without escaping
     const configOutput = document.getElementById('configOutput');
-    configOutput.innerText = configString;
+    configOutput.innerText = cleanedConfigString;
 
     return config;
 }
