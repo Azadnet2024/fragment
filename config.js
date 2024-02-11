@@ -161,11 +161,6 @@ function generateConfig() {
         }
     };
     
-    
-function generateConfig() {
-    // ... (your existing code)
-
-    // Convert the config object to a JSON string
     const configString = JSON.stringify(config, null, 2);
 
     // Replace escaped backslashes
