@@ -21,9 +21,7 @@ function generateConfig() {
             "hosts": {
                 "domain:googleapis.cn": "googleapis.com"
             },
-            "servers": [
-                "8.8.8.8"
-            ]
+            "servers": ["8.8.8.8"]
         },
         "inbounds": [
             {
@@ -36,10 +34,7 @@ function generateConfig() {
                     "userLevel": 8
                 },
                 "sniffing": {
-                    "destOverride": [
-                        "http",
-                        "tls"
-                    ],
+                    "destOverride": ["http","tls"],
                     "enabled": true
                 },
                 "tag": "socks"
@@ -88,17 +83,11 @@ function generateConfig() {
                         "multiMode": false,
                         "serviceName": wsHost
                     },
-                    "sockopt": {
-                        "dialerProxy": "frag",
-                        "tcpNoDelay": allowEarlyData ? true : false
-                    },
                     "network": selectedTransport,
                     "security": tls ? "tls" : "none",
                     "tlsSettings": {
                         "allowInsecure": allowInsecure ? true : false,
-                        "alpn": [
-                            "h2"
-                        ],
+                        "alpn": ["h2", "http/1.1"],
                         "fingerprint": "safari",
                         "publicKey": "",
                         "serverName": randomizedDomain,
@@ -107,29 +96,38 @@ function generateConfig() {
                         "spiderX": ""
                     }
                 },
+                  "proxySettings": {
+                  "tag": "fragment",
+                  "transportLayer": true
+                },
                 "tag": "proxy"
             },
             {
-                "tag": "frag",
-                "protocol": "freedom",
-                "settings": {
-                    "domainStrategy": "AsIs",
+              "protocol": "freedom",
+              "settings": {},
+              "tag": "direct"
+            },
+            {
+              "protocol": "freedom",
+              "tag": "fragment",
+              "domainStrategy": "UseIP",
+              "sniffing": {
+                "enabled": true,
+                "destOverride": ["http", "tls"]
+              },
+              "settings": {
                     "fragment": {
                         "packets": tls ? "tlshello" : "1-1",
-                        "length": tls ? "10-30" : "1-3",
-                        "interval": tls ? "10" : "5"
+                        "length": tls ? "10-20" : "1-3",
+                        "interval": tls ? "10-20" : "5"
                     }
                 },
                 "streamSettings": {
                     "sockopt": {
-                        "tcpNoDelay": allowEarlyData ? true : false
+                        "tcpNoDelay": allowEarlyData ? true : false,
+                        "domainStrategy": "UseIP"
                     }
                 }
-            },
-            {
-                "protocol": "freedom",
-                "settings": {},
-                "tag": "direct"
             },
             {
                 "protocol": "blackhole",
@@ -141,24 +139,33 @@ function generateConfig() {
                 "tag": "block"
             }
         ],
+          "policy": {
+          "levels": {
+            "8": {
+              "connIdle": 300,
+              "downlinkOnly": 1,
+              "handshake": 4,
+              "uplinkOnly": 1
+            }
+          },
+          "system": {
+            "statsOutboundUplink": true,
+            "statsOutboundDownlink": true
+          }
+        },
         "routing": {
-            "domainStrategy": "IPIfNonMatch",
-            "rules": [
-                {
-                    "outboundTag": "proxy",
-                    "port": "53",
-                    "type": "field"
-                },
-                {
-                    "ip": [
-                        "geoip:ir"
-                    ],
-                    "outboundTag": "direct",
-                    "type": "field"
-                }
-            ]
-        }
-    };
+          "domainStrategy": "IPIfNonMatch",
+          "rules": [
+            {
+              "ip": ["1.1.1.1"],
+              "outboundTag": "proxy",
+              "port": "53",
+              "type": "field"
+            }
+          ]
+        },
+        "stats": {}
+      };
 
 const configString = JSON.stringify(config).replace(/\s/g, '');
 
