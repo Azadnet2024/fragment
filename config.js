@@ -17,7 +17,6 @@ function generateConfig() {
     const randomizedPath = path;
     
     const config = {
-{
     "dns": {
         "hosts": {
             "domain:googleapis.cn": "googleapis.com"
