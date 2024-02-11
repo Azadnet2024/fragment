@@ -15,9 +15,6 @@ function generateConfig() {
     const randomizedPath = path;
     const config = {
         "dns": {
-            "hosts": {
-                "domain:googleapis.cn": "googleapis.com"
-            },
             "servers": [
                 "8.8.8.8"
             ]
@@ -113,8 +110,8 @@ function generateConfig() {
                     "domainStrategy": "UseIP",
                     "fragment": {
                         "packets": tls ? "tlshello" : "1-1",
-                        "length": tls ? "10-30" : "1-3",
-                        "interval": tls ? "10" : "5"
+                        "length": tls ? "10-20" : "1-3",
+                        "interval": tls ? "10-20" : "5"
                     }
                 },
                 "streamSettings": {
