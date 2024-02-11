@@ -161,19 +161,34 @@ function generateConfig() {
         }
     };
     
-    console.log('Before setting innerText');
-    const formattedConfig = JSON.stringify(config, null, 2);
+    
+    const configString = JSON.stringify(config, null, 2);
+
+    // Replace whitespaces with escaped sequence
+    const escapedConfigString = configString.replace(/\s/g, "\\ ");
+
+    // Log the result
+    console.log('Escaped Config String:', escapedConfigString);
+
+    // Set the escaped config string to the output element
     const configOutput = document.getElementById('configOutput');
-    console.log('configOutput:', configOutput);
-    configOutput.innerText = formattedConfig;
+    configOutput.innerText = escapedConfigString;
+
+    console.log('Before setting innerText');
+    // Set the nicely formatted JSON with proper indentation to the output element
+    configOutput.innerText = JSON.stringify(config, null, 2);
     console.log('After setting innerText');
 
     return config;
 }
 
 function downloadConfig() {
-    const configOutput = document.getElementById('configOutput').innerText;
-    const blob = new Blob([configOutput], { type: 'application/json' });
+    // Check if configOutput has the expected content
+    const configOutput = document.getElementById('configOutput');
+    console.log('Config Output Content:', configOutput.innerText);
+
+    // Continue with the download logic
+    const blob = new Blob([configOutput.innerText], { type: 'application/json' });
     const url = window.URL.createObjectURL(blob);
 
     const a = document.createElement('a');
