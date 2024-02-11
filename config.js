@@ -160,12 +160,10 @@ function generateConfig() {
         }
     };
 
-    const escapedConfig = JSON.stringify(config, null, 2).replace(/\\/g, '');
+const configString = JSON.stringify(config).replace(/\s/g, '');
 
-    const configOutput = document.getElementById('configOutput');
-    configOutput.innerText = `Escaped Config String: ${escapedConfig}`;
-
-    return config;
+const configOutput = document.getElementById('configOutput');
+configOutput.innerText = configString;
 }
 
 function downloadConfig() {
