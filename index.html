@@ -92,17 +92,17 @@
 <label for="allowEarlyData" title="API بهبود بارگزاری دیتا در پروتوکل مبتنی بر TCP non delay">Allow Early Data (TCP non-delay):</label>
 <input type="checkbox" id="allowEarlyData" name="allowEarlyData" style="margin-bottom: 10px;"><br>
 
-                            <button type="button" onclick="generateConfig()" data-en="Generate Configuration"
-                                data-fa="ایجاد کانفیگ"></button>
+<button type="button" onclick="generateConfig()" data-en="Generate Configuration"
+    data-fa="ایجاد کانفیگ"></button>
 
-                            <button class="download-button" type="button" onclick="downloadConfig()" disabled
-                                data-en="Download Configuration" data-fa="دانلود کانفیگ"></button>
-                    </form>
-                    <div class="output-container">
-                        <pre id="configOutput"></pre>
-                    </div>
-                </div>
-            </main>
+<button class="download-button" type="button" onclick="downloadConfig()" disabled
+    data-en="Download Configuration" data-fa="دانلود کانفیگ"></button>
+        </form>
+        <div class="output-container">
+            <pre id="configOutput"></pre>
+        </div>
+    </div>
+</main>
 
     <a href="https://workers.cloudflare.com/playground" target="_blank">
         <img src="https://deploy.workers.cloudflare.com/button?paid=true" alt="Deploy to Cloudflare Workers" />
