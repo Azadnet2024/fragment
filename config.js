@@ -159,13 +159,11 @@ function generateConfig() {
             ]
         }
     };
-    
-    const configString = JSON.stringify(config, null, 2);
-    const cleanedConfigString = configString.replace(/\\/g, '');
-    console.log('Config String:', cleanedConfigString);
-    
+
+    const escapedConfig = JSON.stringify(config, null, 2).replace(/\\/g, '');
+
     const configOutput = document.getElementById('configOutput');
-    configOutput.innerText = cleanedConfigString;
+    configOutput.innerText = `Escaped Config String: ${escapedConfig}`;
 
     return config;
 }
