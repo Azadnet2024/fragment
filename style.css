@@ -47,7 +47,7 @@ form,
     background-color: #FF0000;
     color: #fff;
     border: none;
-    padding: 1rem 2rem; /* Adjust padding as desired */
+    padding: 1rem; /* Adjust padding as desired */
     border-radius: 0.25rem;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -63,7 +63,7 @@ form,
     background-color: #008080;
     color: #fff;
     border: none;
-    padding: 1rem 2rem; /* Adjust padding as desired */
+    padding: 1rem; /* Adjust padding as desired */
     border-radius: 0.25rem;
     cursor: pointer;
     transition: background-color 0.3s;
