@@ -26,16 +26,16 @@
 <form id="configForm">
 
 <label for="cleanIP" data-en="Clean IP / Domain (e.g. npmjs.com):"data-fa="آی پی تمیز / دامنه (برای مثال npmjs.com):"></label>
-<input type="text" id="cleanIP" name="cleanIP" style="margin-bottom: 10px;"placeholder="محل قرارگیری آی پی تمیز یا دامنه"><br>
+<input type="text" id="cleanIP" name="cleanIP" style="margin-bottom: 15px;"placeholder="محل قرارگیری آی پی تمیز یا دامنه"><br>
 
 <label for="yourDomain" data-en="Your CDN Domain" data-fa="دامنه کانفیگ"></label>
-<input type="text" id="yourDomain" name="yourDomain" placeholder="محل قرارگیری دامنه کانفیگ یا وپن" style="margin-bottom: 10px;"><br>
+<input type="text" id="yourDomain" name="yourDomain" placeholder="محل قرارگیری دامنه کانفیگ یا وپن" style="margin-bottom: 15px;"><br>
 
 <label for="wsHost" data-en="ws host / gRPC servicename" data-fa="وب سوکت هاست / سرویس جی ار پی سی"></label>
-<input type="text" id="wsHost" name="wsHost" placeholder="محل قرارگیری دامنه کانفیگ یا وپن" style="margin-bottom: 1px;"><br>
+<input type="text" id="wsHost" name="wsHost" placeholder="محل قرارگیری دامنه کانفیگ یا وپن" style="margin-bottom: 15px;"><br>
 
 <label for="port" data-en="Port" data-fa="پورت کانفیگ"></label>
-<select id="port" name="port" style="margin-bottom: 1px;">
+<select id="port" name="port" style="margin-bottom: 15px;">
 <option value="8443">8443</option>
 <option value="2053">2053</option>
 <option value="2096">2096</option>
@@ -51,34 +51,34 @@
 </select><br>
 
 <label for="userUUID" data-en="UUID" data-fa="یوآیدی کانفیگ"></label>
-<input type="text" id="userUUID" name="userUUID" placeholder="محل قرارگیری یوآیدی کانفیگ" style="margin-bottom: 10px;" required><br>
+<input type="text" id="userUUID" name="userUUID" placeholder="محل قرارگیری یوآیدی کانفیگ" style="margin-bottom: 15px;" required><br>
 
 <label for="protocol" data-en="Protocol" data-fa="پروتوکل کانفیگ"></label>
-<select id="protocol" name="protocol" style="margin-bottom: 10px;">
+<select id="protocol" name="protocol" style="margin-bottom: 15px;">
 <option value="vless">VLESS</option>
 <option value="vmess">VMESS</option>
 </select><br>
 
 <label for="transport" data-en="Transport" data-fa="ترنسپورت"></label>
-<select id="transport" name="transport" style="margin-bottom: 10px;">
+<select id="transport" name="transport" style="margin-bottom: 15px;">
 <option value="ws">WS</option>
 <option value="grpc">gRPC</option>
 </select><br>
 
 <label for="path" data-en="Path" data-fa="مسیر پیکربندی"></label>
-<input type="text" id="path" name="path" placeholder="e.g., /?ed=2048" style="margin-bottom: 10px;"><br>
+<input type="text" id="path" name="path" placeholder="e.g., /?ed=2048" style="margin-bottom: 15px;"><br>
             
 <label for="tls" title="در صورت انتخاب, به پورت دقت کنید">Enable TLS:</label>
-<input type="checkbox" id="tls" name="tls" style="margin-bottom: 10px;"><br>
+<input type="checkbox" id="tls" name="tls" style="margin-bottom: 15px;"><br>
 
 <label for="mux" title="کاهش زمان تاخیر در ارسال داده ها">Enable Mux:</label>
-<input type="checkbox" id="mux" name="mux" style="margin-bottom: 10px;"><br>
+<input type="checkbox" id="mux" name="mux" style="margin-bottom: 15px;"><br>
 
 <label for="allowInsecure" title="در صورت استفاده از ای پی در اس ان ای روشن شود">Allow insecure:</label>
-<input type="checkbox" id="allowInsecure" name="allowInsecure" style="margin-bottom: 10px;"><br>
+<input type="checkbox" id="allowInsecure" name="allowInsecure" style="margin-bottom: 15px;"><br>
 
 <label for="allowEarlyData" title="API بهبود بارگزاری دیتا در پروتوکل مبتنی بر TCP non delay">Allow Early Data (TCP non-delay):</label>
-<input type="checkbox" id="allowEarlyData" name="allowEarlyData" style="margin-bottom: 10px;"><br>
+<input type="checkbox" id="allowEarlyData" name="allowEarlyData" style="margin-bottom: 15px;"><br>
 
 <button type="button" onclick="generateConfig()" class="generate-button" data-en="Generate Configuration" data-fa="ایجاد کانفیگ">Generate Configuration</button>
 
