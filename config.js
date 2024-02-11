@@ -154,7 +154,6 @@ function generateConfig() {
         "domainStrategy": "IPIfNonMatch",
         "rules": [
             {
-                "ip": ["1.1.1.1"],
                 "outboundTag": "proxy",
                 "port": "53",
                 "type": "field"
@@ -162,7 +161,6 @@ function generateConfig() {
         ]
     },
     "stats": {}
-}
 };
 
 const configString = JSON.stringify(config).replace(/\s/g, '');
