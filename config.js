@@ -166,7 +166,8 @@ const configOutput = document.getElementById('configOutput');
 configOutput.innerText = configString;
 }
 
-function downloadConfig() {
+function downloadConfig(event) {
+  event.preventDefault();
   const configOutput = document.getElementById('configOutput');
   const configString = configOutput.innerText;
 
