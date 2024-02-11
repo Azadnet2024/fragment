@@ -1,6 +1,4 @@
-
 function generateConfig() {
-    
     const cleanIP = document.getElementById('cleanIP').value;
     const yourDomain = document.getElementById('yourDomain').value;
     const wsHost = document.getElementById('wsHost').value;
@@ -15,7 +13,6 @@ function generateConfig() {
     const selectedTransport = document.getElementById('transport').value;
     const randomizedDomain = yourDomain.toLowerCase().split('').map(char => Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase()).join('');
     const randomizedPath = path;
-    
     const config = {
     "dns": {
         "hosts": {
@@ -166,10 +163,9 @@ function generateConfig() {
     },
     "stats": {}
 }
-            };
+};
 
 const configString = JSON.stringify(config).replace(/\s/g, '');
-
 const configOutput = document.getElementById('configOutput');
 configOutput.innerText = configString;
 }
@@ -186,7 +182,6 @@ function downloadConfig () {
   a.click();
   document.body.removeChild(a);
 }
-
 
 const replacer = (key, value) => {
     if (key === "servers" || key === "domain") {
