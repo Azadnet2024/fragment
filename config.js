@@ -20,7 +20,7 @@ function generateConfig() {
                 "domain:googleapis.cn": "googleapis.com"
             },
             "servers": [
-                "1.1.1.1"
+                "8.8.8.8"
             ]
         },
         "inbounds": [
@@ -143,9 +143,6 @@ function generateConfig() {
             "domainStrategy": "IPIfNonMatch",
             "rules": [
                 {
-                    "ip": [
-                        "1.1.1.1"
-                    ],
                     "outboundTag": "proxy",
                     "port": "53",
                     "type": "field"
