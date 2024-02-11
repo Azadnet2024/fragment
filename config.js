@@ -164,20 +164,12 @@ function generateConfig() {
     
     const configString = JSON.stringify(config, null, 2);
 
-    // Replace whitespaces with escaped sequence
-    const escapedConfigString = configString.replace(/\s/g, "\\ ");
-
     // Log the result
-    console.log('Escaped Config String:', escapedConfigString);
+    console.log('Config String:', configString);
 
-    // Set the escaped config string to the output element
+    // Set the config string to the output element without escaping
     const configOutput = document.getElementById('configOutput');
-    configOutput.innerText = escapedConfigString;
-
-    console.log('Before setting innerText');
-    // Set the nicely formatted JSON with proper indentation to the output element
-    configOutput.innerText = JSON.stringify(config, null, 2);
-    console.log('After setting innerText');
+    configOutput.innerText = configString;
 
     return config;
 }
