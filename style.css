@@ -42,9 +42,9 @@ form,
 }
 
 /* Button styling */
-button,
+
 .download-button {
-    background-color: #008080;
+    background-color: #FF0000;
     color: #fff;
     border: none;
     padding: 1.5rem;
@@ -52,14 +52,16 @@ button,
     cursor: pointer;
     transition: background-color 0.3s;
     margin: 1rem 0;
+    text-decoration: none; /* Add this line to remove underline */
 }
 
+.download-button:hover {
+    background-color: #eee;
+}
+
+button,
 button:hover {
     background-color: #005757;
-}
-
-.download-button {
-    background-color: #FF0000;
 }
 
 .download-button:hover {
