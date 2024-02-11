@@ -1,4 +1,6 @@
+
 function generateConfig() {
+    
     const cleanIP = document.getElementById('cleanIP').value;
     const yourDomain = document.getElementById('yourDomain').value;
     const wsHost = document.getElementById('wsHost').value;
@@ -159,14 +161,9 @@ function generateConfig() {
     };
     
     const configString = JSON.stringify(config, null, 2);
-
-    // Replace escaped backslashes
     const cleanedConfigString = configString.replace(/\\/g, '');
-
-    // Log the result
     console.log('Config String:', cleanedConfigString);
-
-    // Set the config string to the output element without escaping
+    
     const configOutput = document.getElementById('configOutput');
     configOutput.innerText = cleanedConfigString;
 
